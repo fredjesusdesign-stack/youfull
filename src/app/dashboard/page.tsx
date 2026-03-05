@@ -1,8 +1,9 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { createPortalSession } from '@/lib/stripe/actions'
+import { logout } from '@/app/(auth)/actions'
 import Link from 'next/link'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, LogOut } from 'lucide-react'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -18,9 +19,17 @@ export default async function DashboardPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12 md:py-16">
-      <h1 className="text-2xl font-semibold text-text mb-2">
-        Hello, {profile?.full_name?.split(' ')[0] || 'welcome'}
-      </h1>
+      <div className="flex items-start justify-between mb-2">
+        <h1 className="text-2xl font-semibold text-text">
+          Hello, {profile?.full_name?.split(' ')[0] || 'welcome'}
+        </h1>
+        <form action={logout}>
+          <button className="flex items-center gap-2 text-sm text-text-muted hover:text-text transition-colors">
+            <LogOut size={16} />
+            Sign out
+          </button>
+        </form>
+      </div>
       <p className="text-text-muted mb-8">Your personal Youfull area.</p>
 
       {/* Subscription card */}
