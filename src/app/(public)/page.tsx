@@ -36,7 +36,7 @@ export default async function HomePage() {
       {/* Hero Section */}
       <section className="pt-16 overflow-hidden">
         {/* Large youfull wordmark */}
-        <div className="px-4 md:px-8 pt-16 md:pt-24">
+        <div className="px-8 pt-16 md:pt-24">
           <Image
             src="/logo-hero.svg"
             alt="youfull"
@@ -48,8 +48,8 @@ export default async function HomePage() {
         </div>
 
         {/* Hero photo */}
-        <div className="px-4 md:px-8 mt-4 md:mt-6">
-          <div className="relative w-full aspect-[16/9] md:aspect-[1376/784] rounded-xl md:rounded-2xl overflow-hidden">
+        <div className="px-8 mt-4 md:mt-6">
+          <div className="relative w-full aspect-[16/9] md:aspect-[1376/784] overflow-hidden">
             <Image
               src="/hero.jpg"
               alt="Yoga"
@@ -62,7 +62,7 @@ export default async function HomePage() {
         </div>
 
         {/* Tagline */}
-        <div className="px-4 md:px-8 mt-12 md:mt-16 pb-20 md:pb-28">
+        <div className="px-8 mt-12 md:mt-16 pb-20 md:pb-28">
           <p className="text-[#030201] text-3xl md:text-5xl font-medium leading-tight max-w-2xl">
             Youfull é uma plataforma de bem-estar holístico para te ajudar a alcançar equilíbrio, vitalidade e mindfulness.
           </p>

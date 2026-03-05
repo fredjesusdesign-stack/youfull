@@ -21,9 +21,8 @@ export default async function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="group relative block" style={{ width: 126, height: 20 }}>
-          <Image src="/logo.svg" alt="Youfull" width={126} height={20} priority className="transition-opacity duration-300 group-hover:opacity-0" />
-          <Image src="/logo-hover.svg" alt="" width={126} height={20} aria-hidden className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <Link href="/" className="block">
+          <Image src="/logo-mark.svg" alt="Youfull" width={24} height={24} priority />
         </Link>
 
         {/* Desktop nav links */}
