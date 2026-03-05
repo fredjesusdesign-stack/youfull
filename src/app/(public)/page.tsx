@@ -117,7 +117,9 @@ export default async function HomePage() {
 
         {/* Right: cream + wave top + quote bottom */}
         <div className="bg-[#EFEDE6] flex flex-col justify-between px-8 md:px-12 pt-16 pb-16">
-          <WaveAnimation />
+          <div className="-mx-8 md:-mx-12">
+            <WaveAnimation />
+          </div>
           <p className="text-[#c9c1bc] text-2xl md:text-3xl font-medium leading-snug mt-auto">
             Your body is not something to fix. It&apos;s something to listen to.
           </p>
