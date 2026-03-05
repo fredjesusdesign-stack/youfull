@@ -37,7 +37,7 @@ export default function PrecosPage() {
             <span className="text-text-muted">/month</span>
           </div>
           <form action={createCheckoutSession}>
-            <input type="hidden" name="priceId" value={process.env.STRIPE_MONTHLY_PRICE_ID} />
+            <input type="hidden" name="priceId" value={process.env.STRIPE_PRICE_MONTHLY} />
             <button
               type="submit"
               className="block w-full py-3 text-center border border-primary text-primary hover:bg-primary hover:text-white rounded-full font-medium transition-colors text-sm mb-6"
@@ -69,7 +69,7 @@ export default function PrecosPage() {
           </div>
           <p className="text-primary text-xs font-medium mb-6">Save ~17% · equivalent to €12.50/month</p>
           <form action={createCheckoutSession}>
-            <input type="hidden" name="priceId" value={process.env.STRIPE_ANNUAL_PRICE_ID} />
+            <input type="hidden" name="priceId" value={process.env.STRIPE_PRICE_ANNUAL} />
             <button
               type="submit"
               className="block w-full py-3 text-center bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors text-sm mb-6"
