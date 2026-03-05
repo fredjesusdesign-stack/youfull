@@ -4,10 +4,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const navLinks = [
-  { href: '/videos', label: 'Videos' },
-  { href: '/receitas', label: 'Recipes' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/colecoes', label: 'Collections' },
+  { href: '/videos', label: 'Move' },
+  { href: '/blog', label: 'Breathe' },
+  { href: '/receitas', label: 'Nourish' },
 ]
 
 export default function NavLinks() {
