@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { logout } from '@/app/(auth)/actions'
@@ -40,10 +41,10 @@ export default async function AdminLayout({
       {/* Desktop sidebar */}
       <aside className="hidden md:flex flex-col fixed left-0 top-0 h-full w-56 bg-surface border-r border-border z-40">
         <div className="p-6 border-b border-border">
-          <Link href="/" className="text-lg font-semibold text-text">
-            Youfull
+          <Link href="/" className="block mb-1">
+            <Image src="/logo-wordmark.svg" alt="Youfull" width={76} height={16} priority />
           </Link>
-          <p className="text-xs text-text-muted mt-0.5">Admin</p>
+          <p className="text-xs text-text-muted">Admin</p>
         </div>
         <nav className="flex-1 p-4 space-y-0.5 overflow-y-auto">
           {navItems.map((item) => (
@@ -68,7 +69,9 @@ export default async function AdminLayout({
 
       {/* Mobile top bar */}
       <div className="md:hidden flex items-center justify-between px-4 h-14 bg-surface border-b border-border fixed top-0 left-0 right-0 z-40">
-        <Link href="/" className="font-semibold text-text">Youfull Admin</Link>
+        <Link href="/" className="block">
+            <Image src="/logo-wordmark.svg" alt="Youfull" width={76} height={16} priority />
+          </Link>
         <AdminMobileNav navItems={navItems} />
       </div>
 

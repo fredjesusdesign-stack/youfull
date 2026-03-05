@@ -12,7 +12,7 @@ const adminSupabase = createClient(
 export default async function AdminUtilizadoresPage() {
   const { data: profiles } = await adminSupabase
     .from('profiles')
-    .select('id, full_name, role, created_at')
+    .select('id, full_name, email, role, created_at')
     .order('created_at', { ascending: false })
     .limit(100)
 
@@ -31,6 +31,7 @@ export default async function AdminUtilizadoresPage() {
             <thead>
               <tr className="border-b border-border">
                 <th className="text-left px-4 py-3 text-text-muted font-medium">Name</th>
+                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Email</th>
                 <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Role</th>
                 <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Subscription</th>
                 <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Since</th>
@@ -42,6 +43,7 @@ export default async function AdminUtilizadoresPage() {
                 return (
                   <tr key={p.id} className="border-b border-border last:border-0 hover:bg-background transition-colors">
                     <td className="px-4 py-3 text-text font-medium">{p.full_name || '—'}</td>
+                    <td className="px-4 py-3 text-text-muted text-sm hidden md:table-cell">{p.email || '—'}</td>
                     <td className="px-4 py-3 hidden md:table-cell">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${p.role === 'admin' ? 'bg-red-50 text-red-600' : p.role === 'premium' ? 'bg-primary/10 text-primary' : 'bg-surface text-text-muted border border-border'}`}>
                         {p.role}
