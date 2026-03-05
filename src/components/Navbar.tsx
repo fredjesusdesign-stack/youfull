@@ -13,7 +13,7 @@ export default async function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="px-8 h-[68px] flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="block">
           <Image src="/logo-mark.svg" alt="Youfull" width={24} height={24} priority />
