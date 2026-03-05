@@ -13,14 +13,16 @@ export default async function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm">
-      <div className="px-8 h-[68px] flex items-center justify-between">
+      <div className="px-8 h-[68px] relative flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="block">
           <Image src="/logo-mark.svg" alt="Youfull" width={24} height={24} priority />
         </Link>
 
-        {/* Desktop nav links */}
-        <NavLinks />
+        {/* Desktop nav links — absolutely centered in viewport */}
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <NavLinks />
+        </div>
 
         {/* Desktop auth */}
         <div className="hidden md:flex items-center gap-4">
