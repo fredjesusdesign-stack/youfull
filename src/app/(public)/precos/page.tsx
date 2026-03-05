@@ -1,13 +1,12 @@
 import { Metadata } from 'next'
 import { Check } from 'lucide-react'
+import { createCheckoutSession } from '@/lib/stripe/actions'
 
 export const metadata: Metadata = {
   title: 'Planos',
   description: 'Escolhe o plano certo para o teu estilo de vida.',
 }
 
-// NOTE: The actual checkout action will be wired in Task 18 (Stripe).
-// For now, links point to /login or use placeholder form action.
 export default function PrecosPage() {
   const features = [
     'Acesso a todos os vídeos premium',
@@ -19,7 +18,6 @@ export default function PrecosPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10 md:py-20">
-      {/* Header */}
       <div className="text-center mb-12 md:mb-16">
         <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Membership</p>
         <h1 className="text-3xl md:text-5xl font-light text-text mb-4 leading-tight">
@@ -30,7 +28,6 @@ export default function PrecosPage() {
         </p>
       </div>
 
-      {/* Plans */}
       <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
         {/* Monthly */}
         <div className="border border-border rounded-2xl p-8 bg-background">
@@ -39,12 +36,15 @@ export default function PrecosPage() {
             <span className="text-4xl font-light text-text">€9</span>
             <span className="text-text-muted">.99/mês</span>
           </div>
-          <a
-            href="/login"
-            className="block w-full py-3 text-center border border-primary text-primary hover:bg-primary hover:text-white rounded-full font-medium transition-colors text-sm mb-6"
-          >
-            Começar agora
-          </a>
+          <form action={createCheckoutSession}>
+            <input type="hidden" name="priceId" value={process.env.STRIPE_MONTHLY_PRICE_ID} />
+            <button
+              type="submit"
+              className="block w-full py-3 text-center border border-primary text-primary hover:bg-primary hover:text-white rounded-full font-medium transition-colors text-sm mb-6"
+            >
+              Começar agora
+            </button>
+          </form>
           <ul className="space-y-3">
             {features.map((f) => (
               <li key={f} className="flex items-start gap-2 text-sm text-text-muted">
@@ -68,12 +68,15 @@ export default function PrecosPage() {
             <span className="text-text-muted">/ano</span>
           </div>
           <p className="text-primary text-xs font-medium mb-6">Poupa ~34% · equivale a €6.58/mês</p>
-          <a
-            href="/login"
-            className="block w-full py-3 text-center bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors text-sm mb-6"
-          >
-            Começar agora
-          </a>
+          <form action={createCheckoutSession}>
+            <input type="hidden" name="priceId" value={process.env.STRIPE_ANNUAL_PRICE_ID} />
+            <button
+              type="submit"
+              className="block w-full py-3 text-center bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors text-sm mb-6"
+            >
+              Começar agora
+            </button>
+          </form>
           <ul className="space-y-3">
             {features.map((f) => (
               <li key={f} className="flex items-start gap-2 text-sm text-text-muted">
@@ -85,7 +88,6 @@ export default function PrecosPage() {
         </div>
       </div>
 
-      {/* Trust line */}
       <p className="text-center text-text-muted text-sm">
         Pagamento seguro via Stripe · Apple Pay · MB Way · Cartão
       </p>
