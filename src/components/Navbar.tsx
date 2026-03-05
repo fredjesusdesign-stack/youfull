@@ -3,13 +3,7 @@ import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { logout } from '@/app/(auth)/actions'
 import MobileMenu from './MobileMenu'
-
-const navLinks = [
-  { href: '/videos', label: 'Videos' },
-  { href: '/receitas', label: 'Recipes' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/colecoes', label: 'Collections' },
-]
+import NavLinks from './NavLinks'
 
 export default async function Navbar() {
   const supabase = await createClient()
@@ -26,17 +20,7 @@ export default async function Navbar() {
         </Link>
 
         {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-text-muted hover:text-text transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+        <NavLinks />
 
         {/* Desktop auth */}
         <div className="hidden md:flex items-center gap-4">
@@ -64,7 +48,7 @@ export default async function Navbar() {
               </Link>
               <Link
                 href="/precos"
-                className="px-5 py-2 bg-[#222523] hover:bg-[#2e3228] text-[#F6F4EE] text-sm rounded-full transition-colors font-medium"
+                className="px-5 py-2 bg-[#222523] hover:bg-[#2e3228] text-[#F6F4EE] text-sm rounded-xl transition-colors font-medium"
               >
                 Tornar-me membro
               </Link>
