@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import Cropper from 'react-easy-crop'
 import type { Area } from 'react-easy-crop'
 import { Upload, Loader2 } from 'lucide-react'
@@ -24,7 +24,8 @@ async function getCroppedBlob(imageSrc: string, pixelCrop: Area): Promise<Blob> 
   const canvas = document.createElement('canvas')
   canvas.width = pixelCrop.width
   canvas.height = pixelCrop.height
-  const ctx = canvas.getContext('2d')!
+  const ctx = canvas.getContext('2d')
+  if (!ctx) throw new Error('Could not get 2D canvas context')
 
   ctx.drawImage(
     image,
@@ -48,6 +49,11 @@ export default function ImageCropUpload({ value, onChange, bucket, pathPrefix = 
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null)
   const [uploading, setUploading] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    document.body.style.overflow = cropSrc ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [cropSrc])
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
