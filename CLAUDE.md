@@ -1,5 +1,7 @@
 # Youfull — Contexto do Projeto
 
+> **REGRA PARA CLAUDE:** Atualizar este ficheiro a cada 10 minutos de sessão com as alterações feitas. Registar sempre em "Últimas alterações" o que foi modificado, com data. Isto garante continuidade entre sessões.
+
 ## O que é este projeto
 
 **Youfull** é uma plataforma de lifestyle saudável (yoga, receitas, blog) com área de membros premium.
@@ -117,7 +119,9 @@ Todos os forms admin usam **Server Actions** com `action={serverAction}`. O patt
 
 - `src/lib/stripe/` — cliente e server actions
 - Webhook em `src/app/api/stripe/webhook/route.ts`
-- Preços na página pública `/precos`
+- Preços na página pública `/precos` — **€15/mês**, **€150/ano**
+- Variáveis no Vercel: `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL` (não `STRIPE_MONTHLY_PRICE_ID`)
+- `success_url` e `cancel_url` derivados dos headers do request (não env vars) — ver `getBaseUrl()` em `actions.ts`
 
 ## Convenções de código
 
@@ -133,9 +137,23 @@ Todos os forms admin usam **Server Actions** com `action={serverAction}`. O patt
 ## Últimas alterações (2026-03-05)
 
 - Adicionado `react-easy-crop`
-- Criado `src/components/admin/ImageCropUpload.tsx`
+- Criado `src/components/admin/ImageCropUpload.tsx` (crop 16:9, dimensões originais, upload ao "Aplicar")
 - `VideoForm`, `PostForm`, `RecipeForm` atualizados para usar `ImageCropUpload`
-- Design doc em `docs/plans/2026-03-05-image-crop-upload-design.md`
+- Preços atualizados: €15/mês, €150/ano em `/precos`
+- Stripe env vars: `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_ANNUAL`
+- `success_url` via `getBaseUrl()` usando headers do request (não env vars)
+- Logo da navbar: `/public/logo.svg` (normal) + `/public/logo-hover.svg` (hover crossfade)
+- Wordmark SVG no admin sidebar: `/public/logo-wordmark.svg`
+- Admin utilizadores: coluna email via `adminSupabase.auth.admin.listUsers()`
+- Admin instrutores: service role client para contornar RLS
+- Admin vídeos: thumbnail, instrutor, duração na listagem
+- Figma token atualizado em `~/.claude.json` para conta `fred.jesus.design@gmail.com`
+- Design docs em `docs/plans/2026-03-05-image-crop-upload-design.md` e `...-plan.md`
+
+### Pendente
+- Redesign homepage baseado em Figma (node `681:2022`, ficheiro `7S9GplyHPaE6oSVknsaf6q`)
+  - Hero com texto grande "youfull", fundo creme (#F5F0E8), navbar minimalista
+  - Imagem do hero partilhada visualmente mas path do ficheiro desconhecido
 
 ## Repositório
 

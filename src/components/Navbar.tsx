@@ -18,7 +18,7 @@ export default async function Navbar() {
   } = await supabase.auth.getUser()
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="group relative block" style={{ width: 126, height: 20 }}>
@@ -65,9 +65,9 @@ export default async function Navbar() {
               </Link>
               <Link
                 href="/precos"
-                className="px-5 py-2 bg-primary hover:bg-primary-dark text-white text-sm rounded-full transition-colors font-medium"
+                className="px-5 py-2 bg-[#222523] hover:bg-[#2e3228] text-[#F6F4EE] text-sm rounded-full transition-colors font-medium"
               >
-                Get started
+                Tornar-me membro
               </Link>
             </>
           )}

@@ -3,8 +3,8 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-background: #FAFAF8;
-  --color-surface: #F4F4F0;
+  --color-background: #F6F4EE;
+  --color-surface: #EFEDE6;
   --color-primary: #7C9A6E;
   --color-primary-dark: #5A7A52;
   --color-text: #1C1C1A;
