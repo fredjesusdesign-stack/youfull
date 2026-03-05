@@ -115,10 +115,10 @@ export default async function HomePage() {
           />
         </div>
 
-        {/* Right: cream + wave SVG + quote */}
-        <div className="bg-[#EFEDE6] flex flex-col justify-end px-8 md:px-12 pb-12 pt-8">
+        {/* Right: cream + wave top + quote bottom */}
+        <div className="bg-[#EFEDE6] flex flex-col justify-between px-8 md:px-12 pt-16 pb-16">
           <WaveAnimation />
-          <p className="text-[#030201] text-2xl md:text-3xl font-medium leading-snug">
+          <p className="text-[#c9c1bc] text-2xl md:text-3xl font-medium leading-snug mt-auto">
             Your body is not something to fix. It&apos;s something to listen to.
           </p>
         </div>
