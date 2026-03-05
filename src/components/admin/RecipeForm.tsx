@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useRef } from 'react'
-import { Upload, Loader2, Plus, Trash2 } from 'lucide-react'
-import Image from 'next/image'
+import { useState } from 'react'
+import { Plus, Trash2 } from 'lucide-react'
+import ImageCropUpload from './ImageCropUpload'
 
 interface Instructor { id: string; name: string }
 interface Ingredient { name: string; quantity: string; unit: string }
@@ -39,31 +39,12 @@ const CATEGORIES = ['Pequeno-almoço', 'Almoço', 'Jantar', 'Snack', 'Sobremesa'
 
 export default function RecipeForm({ action, recipe, instructors, initialIngredients, initialSteps, initialNutrition }: Props) {
   const [thumbnailUrl, setThumbnailUrl] = useState(recipe?.thumbnail_url ?? '')
-  const [uploading, setUploading] = useState(false)
   const [ingredients, setIngredients] = useState<Ingredient[]>(
     initialIngredients?.length ? initialIngredients : [{ name: '', quantity: '', unit: '' }]
   )
   const [steps, setSteps] = useState<Step[]>(
     initialSteps?.length ? initialSteps : [{ description: '' }]
   )
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
-  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    if (!file) return
-    setUploading(true)
-    try {
-      const { createClient } = await import('@/lib/supabase/client')
-      const supabase = createClient()
-      const ext = file.name.split('.').pop()
-      const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
-      const { error } = await supabase.storage.from('thumbnails').upload(path, file)
-      if (error) throw error
-      const { data } = supabase.storage.from('thumbnails').getPublicUrl(path)
-      setThumbnailUrl(data.publicUrl)
-    } catch { alert('Error uploading.') }
-    finally { setUploading(false) }
-  }
 
   const inputClass = 'w-full px-3 py-2.5 border border-border rounded-xl bg-background text-text text-sm focus:outline-none focus:ring-2 focus:ring-primary transition-colors'
   const labelClass = 'block text-sm font-medium text-text mb-1.5'
@@ -88,20 +69,11 @@ export default function RecipeForm({ action, recipe, instructors, initialIngredi
       <div>
         <label className={labelClass}>Cover image</label>
         <input type="hidden" name="thumbnail_url" value={thumbnailUrl} />
-        <div className="border-2 border-dashed border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors text-center" onClick={() => fileInputRef.current?.click()}>
-          {thumbnailUrl ? (
-            <div className="relative aspect-video rounded-lg overflow-hidden">
-              <Image src={thumbnailUrl} alt="Thumbnail" fill className="object-cover" sizes="400px" />
-            </div>
-          ) : (
-            <div className="py-6">
-              {uploading ? <Loader2 size={20} className="animate-spin text-text-muted mx-auto mb-2" /> : <Upload size={20} className="text-text-muted mx-auto mb-2" />}
-              <p className="text-text-muted text-sm">Click to upload</p>
-            </div>
-          )}
-        </div>
-        <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
-        {thumbnailUrl && <button type="button" onClick={() => setThumbnailUrl('')} className="text-xs text-red-500 mt-1 hover:underline">Remove image</button>}
+        <ImageCropUpload
+          value={thumbnailUrl}
+          onChange={setThumbnailUrl}
+          bucket="thumbnails"
+        />
       </div>
 
       {/* Video URL */}
