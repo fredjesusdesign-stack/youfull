@@ -1,15 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-background: #FAFAF8;
+  --color-surface: #F4F4F0;
+  --color-primary: #7C9A6E;
+  --color-primary-dark: #5A7A52;
+  --color-text: #1C1C1A;
+  --color-text-muted: #8C8C87;
+  --color-border: #E8E8E4;
+  --font-sans: "Inter", sans-serif;
+}
 
 @layer base {
   body {
-    @apply bg-background text-text font-sans antialiased;
-  }
-
-  * {
-    @apply border-border;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
