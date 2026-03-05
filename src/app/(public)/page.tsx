@@ -54,7 +54,8 @@ export default async function HomePage() {
               src="/hero.jpg"
               alt="Yoga"
               fill
-              className="object-cover object-center"
+              className="object-cover"
+              style={{ objectPosition: '50% 35%' }}
               priority
               sizes="(max-width: 768px) 100vw, 95vw"
             />
