@@ -1,7 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import { deleteVideo } from './actions'
-import { Pencil, Trash2, Plus } from 'lucide-react'
+import { Pencil, Plus } from 'lucide-react'
+import DeleteButton from '@/components/admin/DeleteButton'
 
 export default async function AdminVideosPage() {
   const supabase = await createClient()
@@ -55,18 +56,7 @@ export default async function AdminVideosPage() {
                       <Link href={`/admin/videos/${v.id}`} className="p-1.5 text-text-muted hover:text-text transition-colors">
                         <Pencil size={14} />
                       </Link>
-                      <form action={deleteVideo}>
-                        <input type="hidden" name="id" value={v.id} />
-                        <button
-                          type="submit"
-                          className="p-1.5 text-text-muted hover:text-red-500 transition-colors"
-                          onClick={(e) => {
-                            if (!confirm('Delete this video?')) e.preventDefault()
-                          }}
-                        >
-                          <Trash2 size={14} />
-                        </button>
-                      </form>
+                      <DeleteButton action={deleteVideo} id={v.id} confirmMessage="Delete this video?" />
                     </div>
                   </td>
                 </tr>
