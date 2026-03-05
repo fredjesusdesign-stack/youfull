@@ -49,7 +49,7 @@ export default async function HomePage() {
 
         {/* Hero photo */}
         <div className="px-8 mt-4 md:mt-6">
-          <div className="relative w-full aspect-[16/9] md:aspect-[1376/640] overflow-hidden">
+          <div className="relative w-full h-[400px] md:h-[640px] overflow-hidden">
             <Image
               src="/hero.jpg"
               alt="Yoga"
