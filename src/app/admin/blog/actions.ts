@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import slugify from 'slugify'
+import { generateEmbedding } from '@/lib/ai/embeddings'
 
 export async function createPost(formData: FormData) {
   const supabase = await createClient()
@@ -12,7 +13,7 @@ export async function createPost(formData: FormData) {
   const contentStr = formData.get('content') as string
   const content = contentStr ? JSON.parse(contentStr) : null
 
-  await supabase.from('posts').insert({
+  const { data: post } = await supabase.from('posts').insert({
     title,
     slug,
     content,
@@ -21,7 +22,10 @@ export async function createPost(formData: FormData) {
     category: formData.get('category') || null,
     tags: formData.get('tags') ? (formData.get('tags') as string).split(',').map(t => t.trim()).filter(Boolean) : [],
     published_at: formData.getAll('publish').includes('true') ? new Date().toISOString() : null,
-  })
+  }).select().single()
+
+  // Generate embedding for AI search (fire-and-forget)
+  if (post) generateEmbedding('post', post.id, `${title}`).catch(console.error)
 
   revalidatePath('/admin/blog')
   revalidatePath('/blog')
@@ -43,6 +47,9 @@ export async function updatePost(formData: FormData) {
     tags: formData.get('tags') ? (formData.get('tags') as string).split(',').map(t => t.trim()).filter(Boolean) : [],
     published_at: formData.getAll('publish').includes('true') ? new Date().toISOString() : null,
   }).eq('id', id)
+
+  // Generate embedding for AI search (fire-and-forget)
+  generateEmbedding('post', id, `${formData.get('title') as string}`).catch(console.error)
 
   revalidatePath('/admin/blog')
   revalidatePath('/blog')

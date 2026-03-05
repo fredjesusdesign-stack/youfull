@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import slugify from 'slugify'
+import { generateEmbedding } from '@/lib/ai/embeddings'
 
 export async function createRecipe(formData: FormData) {
   const supabase = await createClient()
@@ -65,6 +66,9 @@ export async function createRecipe(formData: FormData) {
     })
   }
 
+  // Generate embedding for AI search (fire-and-forget)
+  generateEmbedding('recipe', recipe.id, `${title} ${formData.get('description') ?? ''}`).catch(console.error)
+
   revalidatePath('/admin/receitas')
   revalidatePath('/receitas')
   redirect('/admin/receitas')
@@ -120,6 +124,9 @@ export async function updateRecipe(formData: FormData) {
       fiber_g: formData.get('fiber_g') ? Number(formData.get('fiber_g')) : null,
     }, { onConflict: 'recipe_id' })
   }
+
+  // Generate embedding for AI search (fire-and-forget)
+  generateEmbedding('recipe', id, `${formData.get('title') as string} ${formData.get('description') ?? ''}`).catch(console.error)
 
   revalidatePath('/admin/receitas')
   revalidatePath('/receitas')

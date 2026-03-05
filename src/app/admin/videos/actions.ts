@@ -4,13 +4,14 @@ import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import slugify from 'slugify'
+import { generateEmbedding } from '@/lib/ai/embeddings'
 
 export async function createVideo(formData: FormData) {
   const supabase = await createClient()
   const title = formData.get('title') as string
   const slug = slugify(title, { lower: true, strict: true })
 
-  const { error } = await supabase.from('videos').insert({
+  const { data: video, error } = await supabase.from('videos').insert({
     title,
     slug,
     description: formData.get('description') || null,
@@ -24,9 +25,13 @@ export async function createVideo(formData: FormData) {
     is_premium: formData.getAll('is_premium').includes('true'),
     instructor_id: formData.get('instructor_id') || null,
     published_at: formData.getAll('publish').includes('true') ? new Date().toISOString() : null,
-  })
+  }).select().single()
 
-  if (error) throw new Error(error.message)
+  if (error || !video) throw new Error(error?.message || 'Failed to create video')
+
+  // Generate embedding for AI search (fire-and-forget)
+  generateEmbedding('video', video.id, `${title} ${formData.get('description') ?? ''}`).catch(console.error)
+
   revalidatePath('/admin/videos')
   revalidatePath('/videos')
   redirect('/admin/videos')
@@ -52,6 +57,10 @@ export async function updateVideo(formData: FormData) {
   }).eq('id', id)
 
   if (error) throw new Error(error.message)
+
+  // Generate embedding for AI search (fire-and-forget)
+  generateEmbedding('video', id, `${formData.get('title') as string} ${formData.get('description') ?? ''}`).catch(console.error)
+
   revalidatePath('/admin/videos')
   revalidatePath('/videos')
   redirect('/admin/videos')
