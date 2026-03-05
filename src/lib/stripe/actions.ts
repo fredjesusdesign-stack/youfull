@@ -3,11 +3,13 @@
 import { stripe } from './client'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import { headers } from 'next/headers'
 
-function getBaseUrl() {
-  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
-  return 'http://localhost:3000'
+async function getBaseUrl() {
+  const h = await headers()
+  const host = h.get('host')
+  const proto = h.get('x-forwarded-proto') ?? 'https'
+  return `${proto}://${host}`
 }
 
 export async function createCheckoutSession(formData: FormData) {
@@ -30,8 +32,8 @@ export async function createCheckoutSession(formData: FormData) {
     customer_email: existingSub?.stripe_customer_id ? undefined : user.email,
     line_items: [{ price: priceId, quantity: 1 }],
     mode: 'subscription',
-    success_url: `${getBaseUrl()}/dashboard?success=true`,
-    cancel_url: `${getBaseUrl()}/precos`,
+    success_url: `${await getBaseUrl()}/dashboard?success=true`,
+    cancel_url: `${await getBaseUrl()}/precos`,
     metadata: { user_id: user.id },
     payment_method_types: ['card'],
     allow_promotion_codes: true,
@@ -59,7 +61,7 @@ export async function createPortalSession() {
 
   const session = await stripe.billingPortal.sessions.create({
     customer: sub.stripe_customer_id,
-    return_url: `${getBaseUrl()}/dashboard`,
+    return_url: `${await getBaseUrl()}/dashboard`,
   })
 
   redirect(session.url)
