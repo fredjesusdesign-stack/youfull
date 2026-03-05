@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import ParallaxGlow from '@/components/ParallaxGlow'
+import WaveAnimation from '@/components/WaveAnimation'
 
 export default async function HomePage() {
   return (
@@ -112,10 +113,7 @@ export default async function HomePage() {
 
         {/* Right: cream + wave SVG + quote */}
         <div className="bg-[#EFEDE6] flex flex-col justify-end px-8 md:px-12 pb-12 pt-8">
-          {/* Wave SVG */}
-          <svg viewBox="0 0 400 60" className="w-full mb-10 opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 30 C50 10, 100 50, 150 30 S250 10, 300 30 S380 50, 400 30" stroke="#030201" strokeWidth="1.5" fill="none"/>
-          </svg>
+          <WaveAnimation />
           <p className="text-[#030201] text-2xl md:text-3xl font-medium leading-snug">
             Your body is not something to fix. It&apos;s something to listen to.
           </p>
