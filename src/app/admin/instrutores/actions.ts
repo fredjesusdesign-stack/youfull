@@ -8,13 +8,14 @@ import slugify from 'slugify'
 export async function createInstructor(formData: FormData) {
   const supabase = await createClient()
   const name = formData.get('name') as string
-  await supabase.from('instructors').insert({
+  const { error } = await supabase.from('instructors').insert({
     name,
     slug: slugify(name, { lower: true, strict: true }),
     bio: formData.get('bio') || null,
     avatar_url: formData.get('avatar_url') || null,
     instagram_url: formData.get('instagram_url') || null,
   })
+  if (error) { console.error('[createInstructor]', error); throw new Error(error.message) }
   revalidatePath('/admin/instrutores')
   redirect('/admin/instrutores')
 }

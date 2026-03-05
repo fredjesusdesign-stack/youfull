@@ -1,11 +1,16 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient as createServiceClient } from '@supabase/supabase-js'
 import Link from 'next/link'
 import { deleteInstructor } from './actions'
 import { Pencil, Trash2, Plus } from 'lucide-react'
 
+const adminSupabase = createServiceClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+)
+
 export default async function AdminInstrutoresPage() {
-  const supabase = await createClient()
-  const { data: instructors } = await supabase.from('instructors').select('*').order('name')
+  const { data: instructors, error } = await adminSupabase.from('instructors').select('*').order('name')
+  if (error) console.error('[admin/instrutores]', error)
 
   return (
     <div>
