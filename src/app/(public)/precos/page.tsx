@@ -33,8 +33,8 @@ export default function PrecosPage() {
         <div className="border border-border rounded-2xl p-8 bg-background">
           <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Monthly</p>
           <div className="mb-6">
-            <span className="text-4xl font-light text-text">€9</span>
-            <span className="text-text-muted">.99/month</span>
+            <span className="text-4xl font-light text-text">€15</span>
+            <span className="text-text-muted">/month</span>
           </div>
           <form action={createCheckoutSession}>
             <input type="hidden" name="priceId" value={process.env.STRIPE_MONTHLY_PRICE_ID} />
@@ -64,10 +64,10 @@ export default function PrecosPage() {
           </div>
           <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Annual</p>
           <div className="mb-1">
-            <span className="text-4xl font-light text-text">€79</span>
+            <span className="text-4xl font-light text-text">€150</span>
             <span className="text-text-muted">/year</span>
           </div>
-          <p className="text-primary text-xs font-medium mb-6">Save ~34% · equivalent to €6.58/month</p>
+          <p className="text-primary text-xs font-medium mb-6">Save ~17% · equivalent to €12.50/month</p>
           <form action={createCheckoutSession}>
             <input type="hidden" name="priceId" value={process.env.STRIPE_ANNUAL_PRICE_ID} />
             <button
