@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import ParallaxGlow from '@/components/ParallaxGlow'
 
 export default async function HomePage() {
   return (
@@ -16,7 +17,7 @@ export default async function HomePage() {
             style={{ objectPosition: '50% 35%' }}
             sizes="100vw"
           />
-          {/* youfull wordmark overlaid at the bottom of the image */}
+          {/* youfull wordmark overlaid at the bottom */}
           <div className="absolute bottom-0 left-0 right-0">
             <Image
               src="/logo-hero.svg"
@@ -31,76 +32,80 @@ export default async function HomePage() {
 
       {/* ── 2. TAGLINE ── */}
       <section className="px-8 pt-16 pb-20 md:pt-24 md:pb-28">
-        <p className="text-[#030201] text-3xl md:text-5xl font-medium leading-tight max-w-3xl">
-          Youfull is a holistic wellness platform designed to help users achieve balance, vitality, and mindfulness.
-        </p>
+        <div className="max-w-[1408px] mx-auto">
+          <p className="text-[#030201] text-3xl md:text-5xl font-medium leading-tight max-w-3xl">
+            Youfull is a holistic wellness platform designed to help users achieve balance, vitality, and mindfulness.
+          </p>
+        </div>
       </section>
 
-      {/* ── 3. ABOUT — texto + foto com glow verde ── */}
-      <section className="px-8 pb-20 md:pb-28 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        {/* Left: text */}
-        <div className="space-y-6">
-          <p className="text-text text-base md:text-lg leading-relaxed max-w-md">
-            It brings together intentional movement, simple rituals, and sustainable habits to support balance, vitality, and a deeper connection with yourself.
-          </p>
-          <p className="text-text font-medium text-base md:text-lg">
-            It is not about doing more.<br />
-            It&apos;s about choosing YOU.
-          </p>
-          <Link href="/blog" className="inline-flex text-sm text-text border-b border-text pb-0.5 hover:opacity-60 transition-opacity">
-            More about us
-          </Link>
-        </div>
-
-        {/* Right: image with green glow */}
-        <div className="relative flex justify-center">
-          <div className="absolute inset-0 flex items-center justify-end pr-8">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-[#c8e88c] opacity-60 blur-3xl" />
+      {/* ── 3. ABOUT — text + image with parallax glow ── */}
+      <section className="relative px-8 pb-20 md:pb-32 overflow-hidden">
+        <div className="max-w-[1408px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          {/* Left: text */}
+          <div className="space-y-6">
+            <p className="text-text text-base md:text-lg leading-relaxed max-w-md">
+              It brings together intentional movement, simple rituals, and sustainable habits to support balance, vitality, and a deeper connection with yourself.
+            </p>
+            <p className="text-text font-medium text-base md:text-lg">
+              It is not about doing more.<br />
+              It&apos;s about choosing YOU.
+            </p>
+            <Link href="/blog" className="inline-flex text-sm text-text border-b border-text pb-0.5 hover:opacity-60 transition-opacity">
+              More about us
+            </Link>
           </div>
-          <div className="relative z-10 w-64 md:w-80">
-            <Image
-              src="/hero-about.png"
-              alt="Yoga meditation"
-              width={480}
-              height={640}
-              className="w-full h-auto object-cover"
-            />
+
+          {/* Right: image with parallax green glow */}
+          <div className="relative flex justify-center md:justify-end">
+            <ParallaxGlow />
+            <div className="relative z-10 w-72 md:w-[420px]">
+              <Image
+                src="/hero-about.png"
+                alt="Yoga meditation"
+                width={480}
+                height={640}
+                className="w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── 4. VALUES — dark section ── */}
       <section className="bg-[#1e1e1c] px-8 py-16 md:py-24">
-        <p className="text-[#6b6b60] text-xs uppercase tracking-widest mb-4">Our approach</p>
-        <h2 className="text-[#f6f4ee] text-3xl md:text-4xl font-medium leading-tight mb-12 md:mb-16 max-w-lg">
-          A gentle way to take{' '}
-          <span className="text-[#a8d070]">care of yourself</span>
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-          {[
-            {
-              title: 'Intention',
-              desc: 'Choosing each step with more meaning. Choosing depth over speed, presence over performance, and what truly fits you because they support from you to feel.',
-            },
-            {
-              title: 'Connection',
-              desc: 'Choosing depth over speed, presence over performance, and what truly fits you because they support you to feel.',
-            },
-            {
-              title: 'Simplicity',
-              desc: "Noticing the extraordinary. Of the now. All that surrounds you. So what remains is a purpose, small, and truly that fits the truest.",
-            },
-          ].map((v) => (
-            <div key={v.title}>
-              <h3 className="text-[#f6f4ee] font-medium mb-3">{v.title}</h3>
-              <p className="text-[#6b6b60] text-sm leading-relaxed">{v.desc}</p>
-            </div>
-          ))}
+        <div className="max-w-[1408px] mx-auto">
+          <p className="text-[#6b6b60] text-xs uppercase tracking-widest mb-4">Our approach</p>
+          <h2 className="text-[#f6f4ee] text-3xl md:text-4xl font-medium leading-tight mb-12 md:mb-16 max-w-lg">
+            A gentle way to take{' '}
+            <span className="text-[#a8d070]">care of yourself</span>
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {[
+              {
+                title: 'Intention',
+                desc: 'Choosing each step with more meaning. Choosing depth over speed, presence over performance, and what truly fits you because they support from you to feel.',
+              },
+              {
+                title: 'Connection',
+                desc: 'Choosing depth over speed, presence over performance, and what truly fits you because they support you to feel.',
+              },
+              {
+                title: 'Simplicity',
+                desc: "Noticing the extraordinary. Of the now. All that surrounds you. So what remains is a purpose, small, and truly that fits the truest.",
+              },
+            ].map((v) => (
+              <div key={v.title}>
+                <h3 className="text-[#f6f4ee] font-medium mb-3">{v.title}</h3>
+                <p className="text-[#6b6b60] text-sm leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── 5. QUOTE — two panels ── */}
-      <section className="grid md:grid-cols-2">
+      <section className="max-w-[1408px] mx-auto grid md:grid-cols-2">
         {/* Left: b&w photo */}
         <div className="relative h-[400px] md:h-[520px] overflow-hidden">
           <Image
@@ -108,7 +113,7 @@ export default async function HomePage() {
             alt=""
             fill
             className="object-cover object-top"
-            sizes="50vw"
+            sizes="(max-width: 768px) 100vw, 704px"
           />
         </div>
 
