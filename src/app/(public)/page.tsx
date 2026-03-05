@@ -40,25 +40,25 @@ export default async function HomePage() {
       </section>
 
       {/* ── 3. ABOUT — text bottom-left + tall portrait image right ── */}
-      <section className="relative overflow-hidden grid md:grid-cols-2" style={{ minHeight: 980 }}>
+      <section className="relative grid md:grid-cols-2" style={{ minHeight: 900 }}>
         {/* Left: text anchored to bottom */}
         <div className="flex items-end px-8 pb-16 md:pb-20">
-          <div className="space-y-5">
-            <p className="text-text text-base md:text-lg leading-relaxed max-w-sm">
+          <div className="space-y-4">
+            <p className="text-text text-base leading-relaxed max-w-xs">
               It brings together intentional movement, simple rituals, and sustainable habits to support balance, vitality, and a deeper connection to yourself.
             </p>
-            <p className="text-text font-medium text-base md:text-lg">
+            <p className="text-text text-base leading-relaxed">
               It is not about doing more.<br />
               It&apos;s about choosing YOU.
             </p>
-            <Link href="/blog" className="inline-flex text-sm text-text border border-[#c9c1bc] rounded-full px-5 py-2 hover:bg-surface transition-colors">
+            <Link href="/blog" className="inline-flex text-sm text-text border border-[#c9c1bc] rounded-full px-4 py-1.5 hover:bg-surface transition-colors">
               More about us
             </Link>
           </div>
         </div>
 
-        {/* Right: 629×980 portrait image + parallax green glow */}
-        <div className="relative" style={{ height: 980 }}>
+        {/* Right: portrait image + large parallax green glow bleeding right */}
+        <div className="relative" style={{ height: 900 }}>
           <ParallaxGlow />
           <div className="absolute inset-0 z-10">
             <Image

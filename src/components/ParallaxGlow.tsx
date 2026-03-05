@@ -20,7 +20,7 @@ export default function ParallaxGlow() {
   return (
     <div
       ref={ref}
-      className="absolute right-0 top-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 rounded-full bg-[#c8e88c] opacity-50 blur-3xl pointer-events-none will-change-transform"
+      className="absolute -right-32 top-1/4 w-[500px] h-[500px] md:w-[600px] md:h-[600px] rounded-full bg-[#c8e88c] opacity-60 blur-3xl pointer-events-none will-change-transform"
     />
   )
 }
