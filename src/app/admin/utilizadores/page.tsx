@@ -12,9 +12,12 @@ const adminSupabase = createClient(
 export default async function AdminUtilizadoresPage() {
   const { data: profiles } = await adminSupabase
     .from('profiles')
-    .select('id, full_name, email, role, created_at')
+    .select('id, full_name, role, created_at')
     .order('created_at', { ascending: false })
     .limit(100)
+
+  const { data: { users } } = await adminSupabase.auth.admin.listUsers({ perPage: 100 })
+  const emailMap = new Map(users.map(u => [u.id, u.email]))
 
   const { data: subscriptions } = await adminSupabase
     .from('subscriptions')
@@ -43,7 +46,7 @@ export default async function AdminUtilizadoresPage() {
                 return (
                   <tr key={p.id} className="border-b border-border last:border-0 hover:bg-background transition-colors">
                     <td className="px-4 py-3 text-text font-medium">{p.full_name || '—'}</td>
-                    <td className="px-4 py-3 text-text-muted text-sm hidden md:table-cell">{p.email || '—'}</td>
+                    <td className="px-4 py-3 text-text-muted text-sm hidden md:table-cell">{emailMap.get(p.id) || '—'}</td>
                     <td className="px-4 py-3 hidden md:table-cell">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${p.role === 'admin' ? 'bg-red-50 text-red-600' : p.role === 'premium' ? 'bg-primary/10 text-primary' : 'bg-surface text-text-muted border border-border'}`}>
                         {p.role}
