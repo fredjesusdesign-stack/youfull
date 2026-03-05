@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'Youfull',
     type: 'website',
+    locale: 'pt_PT',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@youfull',
   },
 }
 
