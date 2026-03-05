@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import { logout } from '@/app/(auth)/actions'
 import MobileMenu from './MobileMenu'
@@ -20,8 +21,8 @@ export default async function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-xl font-semibold text-text tracking-tight">
-          Youfull
+        <Link href="/">
+          <Image src="/logo.svg" alt="Youfull" width={130} height={20} priority />
         </Link>
 
         {/* Desktop nav links */}
