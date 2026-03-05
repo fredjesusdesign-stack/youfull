@@ -22,7 +22,7 @@ export default async function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <Image src="/logo.svg" alt="Youfull" width={130} height={20} priority />
+          <Image src="/logo.svg" alt="Youfull" width={126} height={20} priority />
         </Link>
 
         {/* Desktop nav links */}
