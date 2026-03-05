@@ -17,13 +17,13 @@ export default async function AdminNewsletterPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-semibold text-text">Newsletter</h1>
-          <p className="text-text-muted text-sm mt-0.5">{count ?? 0} subscritores</p>
+          <p className="text-text-muted text-sm mt-0.5">{count ?? 0} subscribers</p>
         </div>
         <a
           href="/api/admin/newsletter/export"
           className="px-4 py-2 border border-border text-text hover:bg-surface rounded-full text-sm transition-colors"
         >
-          Exportar CSV
+          Export CSV
         </a>
       </div>
 
@@ -33,7 +33,7 @@ export default async function AdminNewsletterPage() {
             <thead>
               <tr className="border-b border-border">
                 <th className="text-left px-4 py-3 text-text-muted font-medium">Email</th>
-                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Data</th>
+                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Date</th>
               </tr>
             </thead>
             <tbody>
@@ -41,12 +41,12 @@ export default async function AdminNewsletterPage() {
                 <tr key={s.id} className="border-b border-border last:border-0 hover:bg-background transition-colors">
                   <td className="px-4 py-3 text-text">{s.email}</td>
                   <td className="px-4 py-3 text-text-muted text-xs hidden md:table-cell">
-                    {new Date(s.subscribed_at).toLocaleDateString('pt-PT')}
+                    {new Date(s.subscribed_at).toLocaleDateString('en-US')}
                   </td>
                 </tr>
               ))}
               {(!subs || subs.length === 0) && (
-                <tr><td colSpan={2} className="px-4 py-8 text-center text-text-muted">Nenhum subscritor ainda.</td></tr>
+                <tr><td colSpan={2} className="px-4 py-8 text-center text-text-muted">No subscribers yet.</td></tr>
               )}
             </tbody>
           </table>

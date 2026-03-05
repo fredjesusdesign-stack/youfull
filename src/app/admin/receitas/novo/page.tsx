@@ -7,7 +7,7 @@ export default async function NovaReceitaPage() {
   const { data: instructors } = await supabase.from('instructors').select('id, name').order('name')
   return (
     <div className="max-w-2xl">
-      <h1 className="text-2xl font-semibold text-text mb-6">Nova receita</h1>
+      <h1 className="text-2xl font-semibold text-text mb-6">New recipe</h1>
       <RecipeForm action={createRecipe} instructors={instructors ?? []} />
     </div>
   )

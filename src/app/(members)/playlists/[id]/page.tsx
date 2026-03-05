@@ -66,8 +66,8 @@ export default function PlaylistDetailPage({ params }: { params: Promise<{ id: s
   if (!playlist) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-12 text-center">
-        <p className="text-text-muted">Playlist não encontrada.</p>
-        <Link href="/members/playlists" className="text-primary underline mt-4 block">Voltar às playlists</Link>
+        <p className="text-text-muted">Playlist not found.</p>
+        <Link href="/members/playlists" className="text-primary underline mt-4 block">Back to playlists</Link>
       </div>
     )
   }
@@ -79,18 +79,19 @@ export default function PlaylistDetailPage({ params }: { params: Promise<{ id: s
       <Link href="/members/playlists" className="inline-flex items-center gap-2 text-text-muted hover:text-text text-sm mb-8 transition-colors">
         <ArrowLeft size={16} />
         Playlists
+
       </Link>
 
       <div className="mb-8">
         <h1 className="text-2xl font-semibold text-text">{playlist.title}</h1>
         {playlist.description && <p className="text-text-muted mt-1">{playlist.description}</p>}
-        <p className="text-sm text-text-muted mt-2">{items.length} vídeo{items.length !== 1 ? 's' : ''}</p>
+        <p className="text-sm text-text-muted mt-2">{items.length} video{items.length !== 1 ? 's' : ''}</p>
       </div>
 
       {items.length === 0 ? (
         <div className="text-center py-16 text-text-muted">
-          <p>Esta playlist está vazia.</p>
-          <Link href="/videos" className="text-primary underline mt-2 block">Explorar vídeos</Link>
+          <p>This playlist is empty.</p>
+          <Link href="/videos" className="text-primary underline mt-2 block">Explore videos</Link>
         </div>
       ) : (
         <div className="space-y-3">
@@ -121,7 +122,7 @@ export default function PlaylistDetailPage({ params }: { params: Promise<{ id: s
                   <button
                     onClick={() => removeVideo(item.video_id)}
                     className="p-2 text-text-muted hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100"
-                    aria-label="Remover"
+                    aria-label="Remove"
                   >
                     <Trash2 size={16} />
                   </button>

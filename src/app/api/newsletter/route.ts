@@ -20,18 +20,18 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL,
       to: email,
-      subject: 'Bem-vindo(a) à Youfull!',
+      subject: 'Welcome to Youfull!',
       html: `
         <div style="font-family: Inter, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
           <h1 style="color: #1C1C1A; font-size: 24px; font-weight: 600; margin-bottom: 16px;">
-            Bem-vindo(a) à Youfull!
+            Welcome to Youfull!
           </h1>
           <p style="color: #8C8C87; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-            Obrigado por te juntares à nossa comunidade. Vais receber as melhores dicas de yoga, receitas saudáveis e inspiração para um estilo de vida mais leve.
+            Thank you for joining our community. You will receive the best yoga tips, healthy recipes and inspiration for a lighter lifestyle.
           </p>
           <a href="${process.env.NEXT_PUBLIC_APP_URL ?? 'https://youfull.co'}/videos"
             style="display: inline-block; background: #7C9A6E; color: white; padding: 12px 24px; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 500;">
-            Explorar vídeos
+            Explore videos
           </a>
         </div>
       `,

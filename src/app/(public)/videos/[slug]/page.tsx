@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .eq('slug', slug)
     .single()
 
-  if (!data) return { title: 'Vídeo não encontrado' }
+  if (!data) return { title: 'Video not found' }
 
   return {
     title: data.title,
@@ -42,9 +42,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const DIFFICULTY_LABELS: Record<string, string> = {
-  beginner: 'Iniciante',
-  intermediate: 'Intermédio',
-  advanced: 'Avançado',
+  beginner: 'Beginner',
+  intermediate: 'Intermediate',
+  advanced: 'Advanced',
 }
 
 export default async function VideoPage({ params }: Props) {
@@ -105,7 +105,7 @@ export default async function VideoPage({ params }: Props) {
         className="inline-flex items-center gap-1 text-text-muted hover:text-text text-sm mb-6 transition-colors"
       >
         <ArrowLeft size={14} />
-        Todos os vídeos
+        All videos
       </Link>
 
       {/* Category + Title */}
@@ -149,7 +149,7 @@ export default async function VideoPage({ params }: Props) {
         </div>
       ) : video.is_premium && !hasAccess ? (
         <div className="mb-8">
-          <PremiumLock message="Este vídeo é exclusivo para membros premium. Subscreve para ter acesso ilimitado." />
+          <PremiumLock message="This video is exclusive to premium members. Subscribe for unlimited access." />
         </div>
       ) : null}
 
@@ -161,7 +161,7 @@ export default async function VideoPage({ params }: Props) {
       {/* Instructor */}
       {instructor && (
         <div className="border-t border-border pt-6">
-          <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Instrutor</p>
+          <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Instructor</p>
           <Link
             href={`/instrutores/${instructor.slug}`}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity w-fit"

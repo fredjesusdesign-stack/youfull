@@ -4,10 +4,10 @@ import { logout } from '@/app/(auth)/actions'
 import MobileMenu from './MobileMenu'
 
 const navLinks = [
-  { href: '/videos', label: 'Vídeos' },
-  { href: '/receitas', label: 'Receitas' },
+  { href: '/videos', label: 'Videos' },
+  { href: '/receitas', label: 'Recipes' },
   { href: '/blog', label: 'Blog' },
-  { href: '/colecoes', label: 'Coleções' },
+  { href: '/colecoes', label: 'Collections' },
 ]
 
 export default async function Navbar() {
@@ -45,11 +45,11 @@ export default async function Navbar() {
                 href="/dashboard"
                 className="text-sm text-text-muted hover:text-text transition-colors"
               >
-                A minha conta
+                My account
               </Link>
               <form action={logout}>
                 <button className="text-sm text-text-muted hover:text-text transition-colors">
-                  Sair
+                  Sign out
                 </button>
               </form>
             </>
@@ -59,13 +59,13 @@ export default async function Navbar() {
                 href="/login"
                 className="text-sm text-text-muted hover:text-text transition-colors"
               >
-                Entrar
+                Sign in
               </Link>
               <Link
                 href="/precos"
                 className="px-5 py-2 bg-primary hover:bg-primary-dark text-white text-sm rounded-full transition-colors font-medium"
               >
-                Começar
+                Get started
               </Link>
             </>
           )}

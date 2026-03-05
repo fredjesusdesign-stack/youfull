@@ -47,13 +47,13 @@ export default function RecipeFilterBar({
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
         <button onClick={() => updateParam('type', null)} className={chipClass(!activeType)}>
-          Todas
+          All
         </button>
         <button
           onClick={() => updateParam('type', activeType === 'free' ? null : 'free')}
           className={chipClass(activeType === 'free')}
         >
-          Gratuitas
+          Free
         </button>
         <button
           onClick={() => updateParam('type', activeType === 'premium' ? null : 'premium')}

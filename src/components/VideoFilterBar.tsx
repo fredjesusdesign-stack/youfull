@@ -48,10 +48,10 @@ export default function VideoFilterBar({
       {/* Type filter */}
       <div className="flex flex-wrap gap-2">
         <button onClick={() => updateParam('type', null)} className={chipClass(!activeType)}>
-          Todos
+          All
         </button>
         <button onClick={() => updateParam('type', activeType === 'free' ? null : 'free')} className={chipClass(activeType === 'free')}>
-          Gratuito
+          Free
         </button>
         <button onClick={() => updateParam('type', activeType === 'premium' ? null : 'premium')} className={chipClass(activeType === 'premium')}>
           Premium

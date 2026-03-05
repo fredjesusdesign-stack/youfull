@@ -12,7 +12,7 @@ export default async function EditInstrutorPage({ params }: Props) {
   if (!instructor) notFound()
   return (
     <div className="max-w-xl">
-      <h1 className="text-2xl font-semibold text-text mb-6">Editar instrutor</h1>
+      <h1 className="text-2xl font-semibold text-text mb-6">Edit instructor</h1>
       <InstructorForm action={updateInstructor} instructor={instructor} />
     </div>
   )

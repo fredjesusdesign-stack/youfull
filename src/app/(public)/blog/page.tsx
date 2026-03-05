@@ -4,14 +4,14 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Inspiração, dicas e artigos sobre bem-estar, yoga e alimentação saudável.',
+  description: 'Inspiration, tips and articles on wellness, yoga and healthy eating.',
 }
 
 interface Props {
   searchParams: Promise<{ category?: string; q?: string }>
 }
 
-const CATEGORIES = ['Yoga', 'Nutrição', 'Bem-estar', 'Meditação', 'Receitas', 'Estilo de vida']
+const CATEGORIES = ['Yoga', 'Nutrition', 'Wellness', 'Meditation', 'Recipes', 'Lifestyle']
 
 export default async function BlogPage({ searchParams }: Props) {
   const params = await searchParams
@@ -32,7 +32,7 @@ export default async function BlogPage({ searchParams }: Props) {
     <div className="max-w-6xl mx-auto px-4 py-10 md:py-16">
       {/* Header */}
       <div className="mb-8 md:mb-12">
-        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Inspiração</p>
+        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Inspiration</p>
         <h1 className="text-3xl md:text-4xl font-semibold text-text">Blog</h1>
       </div>
 
@@ -46,7 +46,7 @@ export default async function BlogPage({ searchParams }: Props) {
               : 'bg-background text-text-muted border-border hover:border-primary hover:text-primary'
           }`}
         >
-          Todos
+          All
         </a>
         {CATEGORIES.map((cat) => (
           <a
@@ -75,7 +75,7 @@ export default async function BlogPage({ searchParams }: Props) {
               category={post.category}
               meta={
                 post.published_at
-                  ? new Date(post.published_at).toLocaleDateString('pt-PT', {
+                  ? new Date(post.published_at).toLocaleDateString('en-US', {
                       day: 'numeric',
                       month: 'long',
                       year: 'numeric',
@@ -87,10 +87,10 @@ export default async function BlogPage({ searchParams }: Props) {
         </div>
       ) : (
         <div className="text-center py-16">
-          <p className="text-text-muted">Nenhum artigo encontrado.</p>
+          <p className="text-text-muted">No articles found.</p>
           {params.category && (
             <a href="/blog" className="text-primary text-sm mt-2 block hover:underline">
-              Ver todos
+              See all
             </a>
           )}
         </div>

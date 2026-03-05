@@ -5,10 +5,10 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/videos', label: 'Vídeos' },
-  { href: '/receitas', label: 'Receitas' },
+  { href: '/videos', label: 'Videos' },
+  { href: '/receitas', label: 'Recipes' },
   { href: '/blog', label: 'Blog' },
-  { href: '/colecoes', label: 'Coleções' },
+  { href: '/colecoes', label: 'Collections' },
 ]
 
 export default function MobileMenu({ user }: { user: boolean }) {
@@ -44,7 +44,7 @@ export default function MobileMenu({ user }: { user: boolean }) {
                   onClick={() => setOpen(false)}
                   className="py-3 text-sm text-text-muted hover:text-text"
                 >
-                  A minha conta
+                  My account
                 </Link>
               ) : (
                 <>
@@ -53,14 +53,14 @@ export default function MobileMenu({ user }: { user: boolean }) {
                     onClick={() => setOpen(false)}
                     className="py-3 text-center text-sm border border-border rounded-full text-text hover:bg-surface transition-colors"
                   >
-                    Entrar
+                    Sign in
                   </Link>
                   <Link
                     href="/precos"
                     onClick={() => setOpen(false)}
                     className="py-3 text-center text-sm bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors"
                   >
-                    Começar grátis
+                    Get started free
                   </Link>
                 </>
               )}

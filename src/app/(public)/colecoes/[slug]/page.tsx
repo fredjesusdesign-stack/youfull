@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .select('title, description')
     .eq('slug', slug)
     .single()
-  if (!data) return { title: 'Coleção não encontrada' }
+  if (!data) return { title: 'Collection not found' }
   return { title: data.title, description: data.description ?? undefined }
 }
 
@@ -95,11 +95,11 @@ export default async function ColecaoPage({ params }: Props) {
         className="inline-flex items-center gap-1 text-text-muted hover:text-text text-sm mb-6 transition-colors"
       >
         <ArrowLeft size={14} />
-        Coleções
+        Collections
       </Link>
 
       <div className="mb-8">
-        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Coleção</p>
+        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Collection</p>
         <h1 className="text-3xl md:text-4xl font-semibold text-text mb-3">{collection.title}</h1>
         {collection.description && (
           <p className="text-text-muted max-w-2xl leading-relaxed">{collection.description}</p>
@@ -107,7 +107,7 @@ export default async function ColecaoPage({ params }: Props) {
       </div>
 
       {collection.is_premium && !hasAccess ? (
-        <PremiumLock message="Esta coleção é exclusiva para membros premium." />
+        <PremiumLock message="This collection is exclusive to premium members." />
       ) : validItems.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {validItems.map((item) => {
@@ -142,7 +142,7 @@ export default async function ColecaoPage({ params }: Props) {
           })}
         </div>
       ) : (
-        <p className="text-text-muted">Esta coleção está vazia.</p>
+        <p className="text-text-muted">This collection is empty.</p>
       )}
     </div>
   )

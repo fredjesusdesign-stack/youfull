@@ -5,8 +5,8 @@ import { Lock } from 'lucide-react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Coleções',
-  description: 'Coleções de conteúdo curado para o teu bem-estar.',
+  title: 'Collections',
+  description: 'Curated content collections for your wellness.',
 }
 
 export default async function ColecoesPage() {
@@ -19,8 +19,8 @@ export default async function ColecoesPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10 md:py-16">
       <div className="mb-8 md:mb-12">
-        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Curado</p>
-        <h1 className="text-3xl md:text-4xl font-semibold text-text">Coleções</h1>
+        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Curated</p>
+        <h1 className="text-3xl md:text-4xl font-semibold text-text">Collections</h1>
       </div>
 
       {collections && collections.length > 0 ? (
@@ -58,7 +58,7 @@ export default async function ColecoesPage() {
         </div>
       ) : (
         <div className="text-center py-16">
-          <p className="text-text-muted">Nenhuma coleção disponível ainda.</p>
+          <p className="text-text-muted">No collections available yet.</p>
         </div>
       )}
     </div>

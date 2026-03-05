@@ -57,7 +57,7 @@ export default async function InstrutorPage({ params }: Props) {
       {/* Videos */}
       {videos && videos.length > 0 && (
         <section className="mb-12">
-          <h2 className="text-xl font-semibold text-text mb-6">Vídeos</h2>
+          <h2 className="text-xl font-semibold text-text mb-6">Videos</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {videos.map(v => (
               <ContentCard key={v.id} title={v.title} href={`/videos/${v.slug}`}
@@ -71,7 +71,7 @@ export default async function InstrutorPage({ params }: Props) {
       {/* Recipes */}
       {recipes && recipes.length > 0 && (
         <section>
-          <h2 className="text-xl font-semibold text-text mb-6">Receitas</h2>
+          <h2 className="text-xl font-semibold text-text mb-6">Recipes</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {recipes.map(r => (
               <ContentCard key={r.id} title={r.title} href={`/receitas/${r.slug}`}

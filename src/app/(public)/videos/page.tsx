@@ -5,8 +5,8 @@ import AISearchBar from '@/components/AISearchBar'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Vídeos',
-  description: 'Aulas de yoga, meditação e movimento para todos os níveis.',
+  title: 'Videos',
+  description: 'Yoga, meditation and movement classes for all levels.',
 }
 
 interface Props {
@@ -21,9 +21,9 @@ interface Props {
 const CATEGORIES = ['Yoga', 'Meditação', 'Pilates', 'Respiração', 'Dança', 'Força']
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced']
 const DIFFICULTY_LABELS: Record<string, string> = {
-  beginner: 'Iniciante',
-  intermediate: 'Intermédio',
-  advanced: 'Avançado',
+  beginner: 'Beginner',
+  intermediate: 'Intermediate',
+  advanced: 'Advanced',
 }
 
 export default async function VideosPage({ searchParams }: Props) {
@@ -50,8 +50,8 @@ export default async function VideosPage({ searchParams }: Props) {
     <div className="max-w-6xl mx-auto px-4 py-10 md:py-16">
       {/* Header */}
       <div className="mb-8 md:mb-12">
-        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Movimento</p>
-        <h1 className="text-3xl md:text-4xl font-semibold text-text mb-4">Vídeos</h1>
+        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Movement</p>
+        <h1 className="text-3xl md:text-4xl font-semibold text-text mb-4">Videos</h1>
         {/* AI Search */}
         <div className="max-w-xl">
           <AISearchBar />
@@ -73,8 +73,8 @@ export default async function VideosPage({ searchParams }: Props) {
         {videos && videos.length > 0 ? (
           <>
             <p className="text-text-muted text-sm mb-6">
-              {videos.length} {videos.length === 1 ? 'vídeo' : 'vídeos'}
-              {hasFilters ? ' encontrados' : ''}
+              {videos.length} {videos.length === 1 ? 'video' : 'videos'}
+              {hasFilters ? ' found' : ''}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {videos.map((v) => (
@@ -97,10 +97,10 @@ export default async function VideosPage({ searchParams }: Props) {
           </>
         ) : (
           <div className="text-center py-16">
-            <p className="text-text-muted">Nenhum vídeo encontrado.</p>
+            <p className="text-text-muted">No videos found.</p>
             {hasFilters && (
               <a href="/videos" className="text-primary text-sm mt-2 block hover:underline">
-                Limpar filtros
+                Clear filters
               </a>
             )}
           </div>

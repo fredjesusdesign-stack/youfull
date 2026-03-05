@@ -5,15 +5,15 @@ interface Props {
   searchParams: Promise<{ error?: string }>
 }
 
-export const metadata = { title: 'Criar conta' }
+export const metadata = { title: 'Create account' }
 
 export default async function RegisterPage({ searchParams }: Props) {
   const { error } = await searchParams
 
   return (
     <div className="bg-surface rounded-2xl p-8 border border-border">
-      <h1 className="text-2xl font-semibold text-text mb-2">Cria a tua conta</h1>
-      <p className="text-text-muted text-sm mb-6">Começa a tua jornada de bem-estar</p>
+      <h1 className="text-2xl font-semibold text-text mb-2">Create your account</h1>
+      <p className="text-text-muted text-sm mb-6">Start your wellness journey</p>
 
       {error && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-600">
@@ -24,7 +24,7 @@ export default async function RegisterPage({ searchParams }: Props) {
       <form action={register} className="space-y-4">
         <div>
           <label htmlFor="full_name" className="block text-sm font-medium text-text mb-1">
-            Nome completo
+            Full name
           </label>
           <input
             id="full_name"
@@ -33,7 +33,7 @@ export default async function RegisterPage({ searchParams }: Props) {
             required
             autoComplete="name"
             className="w-full px-4 py-3 rounded-xl border border-border bg-background text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-            placeholder="O teu nome"
+            placeholder="Your name"
           />
         </div>
         <div>
@@ -47,7 +47,7 @@ export default async function RegisterPage({ searchParams }: Props) {
             required
             autoComplete="email"
             className="w-full px-4 py-3 rounded-xl border border-border bg-background text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-            placeholder="o@teu.email"
+            placeholder="your@email.com"
           />
         </div>
         <div>
@@ -62,21 +62,21 @@ export default async function RegisterPage({ searchParams }: Props) {
             autoComplete="new-password"
             minLength={8}
             className="w-full px-4 py-3 rounded-xl border border-border bg-background text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-            placeholder="Mínimo 8 caracteres"
+            placeholder="Minimum 8 characters"
           />
         </div>
         <button
           type="submit"
           className="w-full py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors"
         >
-          Criar conta grátis
+          Create free account
         </button>
       </form>
 
       <p className="mt-6 text-center text-text-muted text-sm">
-        Já tens conta?{' '}
+        Already have an account?{' '}
         <Link href="/login" className="text-primary hover:underline font-medium">
-          Entra aqui
+          Sign in here
         </Link>
       </p>
     </div>

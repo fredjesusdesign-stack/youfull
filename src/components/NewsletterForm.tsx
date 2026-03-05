@@ -29,7 +29,7 @@ export default function NewsletterForm() {
   if (status === 'success') {
     return (
       <p className="text-primary font-medium text-sm">
-        Bem-vindo(a)! Verifica o teu email para confirmar a subscrição.
+        Welcome! Check your email to confirm your subscription.
       </p>
     )
   }
@@ -40,7 +40,7 @@ export default function NewsletterForm() {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="O teu email"
+        placeholder="Your email"
         required
         className="flex-1 px-4 py-3 border border-border rounded-full bg-background text-text text-sm focus:outline-none focus:ring-2 focus:ring-primary placeholder-text-muted"
       />
@@ -49,10 +49,10 @@ export default function NewsletterForm() {
         disabled={status === 'loading'}
         className="px-6 py-3 bg-primary hover:bg-primary-dark disabled:opacity-60 text-white rounded-full text-sm font-medium transition-colors whitespace-nowrap"
       >
-        {status === 'loading' ? 'A enviar...' : 'Subscrever'}
+        {status === 'loading' ? 'Sending...' : 'Subscribe'}
       </button>
       {status === 'error' && (
-        <p className="text-red-500 text-xs mt-1 w-full text-center">Erro. Tenta novamente.</p>
+        <p className="text-red-500 text-xs mt-1 w-full text-center">Error. Please try again.</p>
       )}
     </form>
   )

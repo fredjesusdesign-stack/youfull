@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { Metadata } from 'next'
 
-export const metadata: Metadata = { title: 'Utilizadores' }
+export const metadata: Metadata = { title: 'Users' }
 
 // Use service role to bypass RLS for admin queries
 const adminSupabase = createClient(
@@ -24,16 +24,16 @@ export default async function AdminUtilizadoresPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-text mb-6">Utilizadores</h1>
+      <h1 className="text-2xl font-semibold text-text mb-6">Users</h1>
       <div className="bg-surface border border-border rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left px-4 py-3 text-text-muted font-medium">Nome</th>
-                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Papel</th>
-                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Subscrição</th>
-                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Desde</th>
+                <th className="text-left px-4 py-3 text-text-muted font-medium">Name</th>
+                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Role</th>
+                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Subscription</th>
+                <th className="text-left px-4 py-3 text-text-muted font-medium hidden md:table-cell">Since</th>
               </tr>
             </thead>
             <tbody>
@@ -55,7 +55,7 @@ export default async function AdminUtilizadoresPage() {
                       ) : <span className="text-xs text-text-muted">—</span>}
                     </td>
                     <td className="px-4 py-3 text-text-muted text-xs hidden md:table-cell">
-                      {new Date(p.created_at).toLocaleDateString('pt-PT')}
+                      {new Date(p.created_at).toLocaleDateString('en-US')}
                     </td>
                   </tr>
                 )

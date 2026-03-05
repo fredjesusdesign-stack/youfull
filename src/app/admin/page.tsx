@@ -13,10 +13,10 @@ export default async function AdminDashboard() {
     ])
 
   const stats = [
-    { label: 'Vídeos', count: videoCount ?? 0, href: '/admin/videos' },
-    { label: 'Receitas', count: recipeCount ?? 0, href: '/admin/receitas' },
+    { label: 'Videos', count: videoCount ?? 0, href: '/admin/videos' },
+    { label: 'Recipes', count: recipeCount ?? 0, href: '/admin/receitas' },
     { label: 'Posts', count: postCount ?? 0, href: '/admin/blog' },
-    { label: 'Utilizadores', count: userCount ?? 0, href: '/admin/utilizadores' },
+    { label: 'Users', count: userCount ?? 0, href: '/admin/utilizadores' },
   ]
 
   return (
@@ -36,10 +36,10 @@ export default async function AdminDashboard() {
       </div>
       <div className="flex flex-wrap gap-3">
         <Link href="/admin/videos/novo" className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-full text-sm transition-colors">
-          + Vídeo
+          + Video
         </Link>
         <Link href="/admin/receitas/novo" className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-full text-sm transition-colors">
-          + Receita
+          + Recipe
         </Link>
         <Link href="/admin/blog/novo" className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-full text-sm transition-colors">
           + Post

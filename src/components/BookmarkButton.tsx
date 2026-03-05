@@ -30,7 +30,7 @@ export default function BookmarkButton({ contentType, contentId, initialBookmark
     <button
       onClick={toggle}
       disabled={loading}
-      aria-label={bookmarked ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+      aria-label={bookmarked ? 'Remove from bookmarks' : 'Add to bookmarks'}
       className={`p-2 rounded-full transition-colors ${
         bookmarked
           ? 'text-primary bg-primary/10 hover:bg-primary/20'

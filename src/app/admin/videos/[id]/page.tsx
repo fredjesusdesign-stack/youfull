@@ -20,7 +20,7 @@ export default async function EditVideoPage({ params }: Props) {
 
   return (
     <div className="max-w-2xl">
-      <h1 className="text-2xl font-semibold text-text mb-6">Editar vídeo</h1>
+      <h1 className="text-2xl font-semibold text-text mb-6">Edit video</h1>
       <VideoForm action={updateVideo} video={video} instructors={instructors ?? []} />
     </div>
   )

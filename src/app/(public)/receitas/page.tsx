@@ -5,8 +5,8 @@ import RecipeFilterBar from '@/components/RecipeFilterBar'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Receitas',
-  description: 'Receitas saudáveis, saborosas e fáceis de preparar para o teu estilo de vida.',
+  title: 'Recipes',
+  description: 'Healthy, delicious and easy recipes for your lifestyle.',
 }
 
 interface Props {
@@ -21,9 +21,9 @@ interface Props {
 const CATEGORIES = ['Pequeno-almoço', 'Almoço', 'Jantar', 'Snack', 'Sobremesa', 'Smoothie']
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced']
 const DIFFICULTY_LABELS: Record<string, string> = {
-  beginner: 'Fácil',
-  intermediate: 'Médio',
-  advanced: 'Difícil',
+  beginner: 'Easy',
+  intermediate: 'Medium',
+  advanced: 'Hard',
 }
 
 export default async function ReceitasPage({ searchParams }: Props) {
@@ -50,8 +50,8 @@ export default async function ReceitasPage({ searchParams }: Props) {
     <div className="max-w-6xl mx-auto px-4 py-10 md:py-16">
       {/* Header */}
       <div className="mb-8 md:mb-12">
-        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Nutrição</p>
-        <h1 className="text-3xl md:text-4xl font-semibold text-text mb-4">Receitas</h1>
+        <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Nutrition</p>
+        <h1 className="text-3xl md:text-4xl font-semibold text-text mb-4">Recipes</h1>
         <div className="max-w-xl">
           <AISearchBar />
         </div>
@@ -72,8 +72,8 @@ export default async function ReceitasPage({ searchParams }: Props) {
         {recipes && recipes.length > 0 ? (
           <>
             <p className="text-text-muted text-sm mb-6">
-              {recipes.length} {recipes.length === 1 ? 'receita' : 'receitas'}
-              {hasFilters ? ' encontradas' : ''}
+              {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'}
+              {hasFilters ? ' found' : ''}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {recipes.map((r) => {
@@ -99,10 +99,10 @@ export default async function ReceitasPage({ searchParams }: Props) {
           </>
         ) : (
           <div className="text-center py-16">
-            <p className="text-text-muted">Nenhuma receita encontrada.</p>
+            <p className="text-text-muted">No recipes found.</p>
             {hasFilters && (
               <a href="/receitas" className="text-primary text-sm mt-2 block hover:underline">
-                Limpar filtros
+                Clear filters
               </a>
             )}
           </div>

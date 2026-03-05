@@ -19,31 +19,31 @@ export default async function DashboardPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-12 md:py-16">
       <h1 className="text-2xl font-semibold text-text mb-2">
-        Olá, {profile?.full_name?.split(' ')[0] || 'bem-vindo'}
+        Hello, {profile?.full_name?.split(' ')[0] || 'welcome'}
       </h1>
-      <p className="text-text-muted mb-8">A tua área pessoal Youfull.</p>
+      <p className="text-text-muted mb-8">Your personal Youfull area.</p>
 
       {/* Subscription card */}
       <div className="bg-surface border border-border rounded-2xl p-6 mb-6">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Plano atual</p>
+            <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Current plan</p>
             <div className="flex items-center gap-2">
               {isPremium && <CheckCircle2 size={16} className="text-primary" />}
-              <p className="font-semibold text-text">{isPremium ? 'Premium' : 'Gratuito'}</p>
+              <p className="font-semibold text-text">{isPremium ? 'Premium' : 'Free'}</p>
             </div>
           </div>
           {!isPremium && (
             <Link href="/precos" className="px-4 py-1.5 bg-primary hover:bg-primary-dark text-white rounded-full text-sm transition-colors">
-              Subscrever
+              Subscribe
             </Link>
           )}
         </div>
 
         {sub?.current_period_end && isPremium && (
           <p className="text-text-muted text-sm">
-            Renova a{' '}
-            {new Date(sub.current_period_end).toLocaleDateString('pt-PT', {
+            Renews on{' '}
+            {new Date(sub.current_period_end).toLocaleDateString('en-US', {
               day: 'numeric',
               month: 'long',
               year: 'numeric',
@@ -55,7 +55,7 @@ export default async function DashboardPage() {
           <div className="mt-4 pt-4 border-t border-border">
             <form action={createPortalSession}>
               <button className="text-sm text-primary hover:underline">
-                Gerir subscrição →
+                Manage subscription →
               </button>
             </form>
           </div>
@@ -65,9 +65,9 @@ export default async function DashboardPage() {
       {/* Quick links */}
       <div className="grid grid-cols-2 gap-4">
         {[
-          { href: '/videos', label: 'Vídeos' },
-          { href: '/receitas', label: 'Receitas' },
-          { href: '/members/playlists', label: 'As minhas playlists' },
+          { href: '/videos', label: 'Videos' },
+          { href: '/receitas', label: 'Recipes' },
+          { href: '/members/playlists', label: 'My playlists' },
           { href: '/blog', label: 'Blog' },
         ].map(link => (
           <Link key={link.href} href={link.href}

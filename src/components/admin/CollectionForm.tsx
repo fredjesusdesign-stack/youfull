@@ -35,7 +35,7 @@ export default function CollectionForm({ action, collection }: Props) {
       if (error) throw error
       const { data } = supabase.storage.from('thumbnails').getPublicUrl(path)
       setThumbnailUrl(data.publicUrl)
-    } catch { alert('Erro ao fazer upload.') }
+    } catch { alert('Error uploading.') }
     finally { setUploading(false) }
   }
 
@@ -47,17 +47,17 @@ export default function CollectionForm({ action, collection }: Props) {
       <input type="hidden" name="thumbnail_url" value={thumbnailUrl} />
 
       <div>
-        <label className="block text-sm font-medium text-text mb-1.5">Título *</label>
-        <input name="title" type="text" required defaultValue={collection?.title} className={inputClass} placeholder="Nome da coleção" />
+        <label className="block text-sm font-medium text-text mb-1.5">Title *</label>
+        <input name="title" type="text" required defaultValue={collection?.title} className={inputClass} placeholder="Collection name" />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-text mb-1.5">Descrição</label>
-        <textarea name="description" rows={2} defaultValue={collection?.description ?? ''} className={inputClass} placeholder="Descrição breve..." />
+        <label className="block text-sm font-medium text-text mb-1.5">Description</label>
+        <textarea name="description" rows={2} defaultValue={collection?.description ?? ''} className={inputClass} placeholder="Brief description..." />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-text mb-1.5">Imagem de capa</label>
+        <label className="block text-sm font-medium text-text mb-1.5">Cover image</label>
         <div className="border-2 border-dashed border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors text-center" onClick={() => fileInputRef.current?.click()}>
           {thumbnailUrl ? (
             <div className="relative aspect-video rounded-lg overflow-hidden">
@@ -66,7 +66,7 @@ export default function CollectionForm({ action, collection }: Props) {
           ) : (
             <div className="py-4">
               {uploading ? <Loader2 size={18} className="animate-spin text-text-muted mx-auto mb-1" /> : <Upload size={18} className="text-text-muted mx-auto mb-1" />}
-              <p className="text-text-muted text-xs">Clica para fazer upload</p>
+              <p className="text-text-muted text-xs">Click to upload</p>
             </div>
           )}
         </div>
@@ -76,14 +76,14 @@ export default function CollectionForm({ action, collection }: Props) {
       <label className="flex items-center gap-3 cursor-pointer">
         <input type="hidden" name="is_premium" value="false" />
         <input type="checkbox" name="is_premium" value="true" defaultChecked={collection?.is_premium ?? false} className="w-4 h-4 accent-primary" />
-        <span className="text-sm text-text">Coleção premium</span>
+        <span className="text-sm text-text">Premium collection</span>
       </label>
 
       <div className="flex gap-3 pt-2">
         <button type="submit" className="px-6 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-full text-sm font-medium transition-colors">
-          {collection ? 'Guardar' : 'Criar coleção'}
+          {collection ? 'Save' : 'Create collection'}
         </button>
-        <a href="/admin/colecoes" className="px-6 py-2.5 border border-border text-text-muted hover:text-text rounded-full text-sm transition-colors">Cancelar</a>
+        <a href="/admin/colecoes" className="px-6 py-2.5 border border-border text-text-muted hover:text-text rounded-full text-sm transition-colors">Cancel</a>
       </div>
     </form>
   )

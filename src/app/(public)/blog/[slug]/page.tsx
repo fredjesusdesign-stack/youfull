@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .eq('slug', slug)
     .single()
 
-  if (!data) return { title: 'Artigo não encontrado' }
+  if (!data) return { title: 'Article not found' }
 
   return {
     title: data.title,
@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: Props) {
     try {
       contentHtml = generateHTML(post.content, [StarterKit])
     } catch {
-      contentHtml = '<p>Conteúdo não disponível.</p>'
+      contentHtml = '<p>Content not available.</p>'
     }
   }
 
@@ -90,7 +90,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Date */}
       {post.published_at && (
         <p className="text-text-muted text-sm mb-8">
-          {new Date(post.published_at).toLocaleDateString('pt-PT', {
+          {new Date(post.published_at).toLocaleDateString('en-US', {
             day: 'numeric',
             month: 'long',
             year: 'numeric',

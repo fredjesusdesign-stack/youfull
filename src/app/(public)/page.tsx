@@ -40,28 +40,28 @@ export default async function HomePage() {
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <p className="text-primary text-xs md:text-sm tracking-[0.2em] uppercase mb-4 md:mb-6 font-medium">
-            Bem-vindo à Youfull
+            Welcome to Youfull
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-text leading-[1.1] mb-4 md:mb-6 tracking-tight">
-            Viver melhor,
+            Live better,
             <br />
-            <span className="text-primary">com mais leveza</span>
+            <span className="text-primary">with more ease</span>
           </h1>
           <p className="text-text-muted text-base md:text-xl mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed">
-            Yoga, receitas saudáveis e inspiração para o teu estilo de vida.
+            Yoga, healthy recipes and inspiration for your lifestyle.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/precos"
               className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-dark text-white rounded-full text-sm md:text-base font-medium transition-colors"
             >
-              Começar agora
+              Get started
             </Link>
             <Link
               href="/videos"
               className="w-full sm:w-auto px-8 py-4 border border-border hover:bg-surface text-text rounded-full text-sm md:text-base transition-colors"
             >
-              Explorar vídeos
+              Explore videos
             </Link>
           </div>
         </div>
@@ -77,9 +77,9 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-4 py-8 md:py-10">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
             {[
-              { icon: '🧘', title: 'Yoga & Movimento', desc: 'Aulas para todos os níveis' },
-              { icon: '🥗', title: 'Receitas Saudáveis', desc: 'Simples, nutritivas e saborosas' },
-              { icon: '✨', title: 'Estilo de Vida', desc: 'Dicas e inspiração diária' },
+              { icon: '🧘', title: 'Yoga & Movement', desc: 'Classes for all levels' },
+              { icon: '🥗', title: 'Healthy Recipes', desc: 'Simple, nutritious and delicious' },
+              { icon: '✨', title: 'Lifestyle', desc: 'Daily tips and inspiration' },
             ].map((item) => (
               <div key={item.title} className="flex flex-col items-center gap-2">
                 <span className="text-3xl">{item.icon}</span>
@@ -96,14 +96,14 @@ export default async function HomePage() {
         <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Movimento</p>
-              <h2 className="text-2xl md:text-3xl font-semibold text-text">Vídeos em destaque</h2>
+              <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Movement</p>
+              <h2 className="text-2xl md:text-3xl font-semibold text-text">Featured videos</h2>
             </div>
             <Link
               href="/videos"
               className="hidden sm:flex items-center gap-1 text-primary hover:gap-2 transition-all text-sm font-medium"
             >
-              Ver todos <ArrowRight size={14} />
+              See all <ArrowRight size={14} />
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -121,7 +121,7 @@ export default async function HomePage() {
           </div>
           <div className="mt-6 sm:hidden text-center">
             <Link href="/videos" className="text-primary text-sm font-medium">
-              Ver todos os vídeos →
+              See all videos →
             </Link>
           </div>
         </section>
@@ -133,14 +133,14 @@ export default async function HomePage() {
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Nutrição</p>
-                <h2 className="text-2xl md:text-3xl font-semibold text-text">Receitas da semana</h2>
+                <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Nutrition</p>
+                <h2 className="text-2xl md:text-3xl font-semibold text-text">Recipes of the week</h2>
               </div>
               <Link
                 href="/receitas"
                 className="hidden sm:flex items-center gap-1 text-primary hover:gap-2 transition-all text-sm font-medium"
               >
-                Ver todas <ArrowRight size={14} />
+                See all <ArrowRight size={14} />
               </Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -158,7 +158,7 @@ export default async function HomePage() {
             </div>
             <div className="mt-6 sm:hidden text-center">
               <Link href="/receitas" className="text-primary text-sm font-medium">
-                Ver todas as receitas →
+                See all recipes →
               </Link>
             </div>
           </div>
@@ -170,14 +170,14 @@ export default async function HomePage() {
         <section className="max-w-6xl mx-auto px-4 py-16 md:py-24">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Inspiração</p>
-              <h2 className="text-2xl md:text-3xl font-semibold text-text">Do nosso blog</h2>
+              <p className="text-xs text-text-muted uppercase tracking-widest mb-1">Inspiration</p>
+              <h2 className="text-2xl md:text-3xl font-semibold text-text">From our blog</h2>
             </div>
             <Link
               href="/blog"
               className="hidden sm:flex items-center gap-1 text-primary hover:gap-2 transition-all text-sm font-medium"
             >
-              Ver tudo <ArrowRight size={14} />
+              See all <ArrowRight size={14} />
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -199,16 +199,16 @@ export default async function HomePage() {
         <div className="max-w-3xl mx-auto px-4 py-16 md:py-24 text-center">
           <p className="text-primary text-xs tracking-widest uppercase mb-3">Membership</p>
           <h2 className="text-3xl md:text-4xl font-light text-text mb-4 leading-tight">
-            Acesso ilimitado a todo o conteúdo
+            Unlimited access to all content
           </h2>
           <p className="text-text-muted mb-8 max-w-md mx-auto leading-relaxed">
-            Vídeos premium, receitas exclusivas e novas aulas todas as semanas. Cancela quando quiseres.
+            Premium videos, exclusive recipes and new classes every week. Cancel anytime.
           </p>
           <Link
             href="/precos"
             className="inline-flex px-8 py-4 bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors"
           >
-            Ver planos
+            View plans
           </Link>
         </div>
       </section>
@@ -217,10 +217,10 @@ export default async function HomePage() {
       <section className="max-w-xl mx-auto px-4 py-16 md:py-24 text-center">
         <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Newsletter</p>
         <h2 className="text-2xl md:text-3xl font-semibold text-text mb-2">
-          Fica inspirado todas as semanas
+          Stay inspired every week
         </h2>
         <p className="text-text-muted mb-8 text-sm leading-relaxed">
-          Receitas, vídeos e dicas de bem-estar diretamente no teu email.
+          Recipes, videos and wellness tips delivered to your inbox.
         </p>
         <NewsletterForm />
       </section>

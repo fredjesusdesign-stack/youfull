@@ -6,12 +6,12 @@ import AdminMobileNav from '@/components/admin/AdminMobileNav'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', exact: true },
-  { href: '/admin/videos', label: 'Vídeos' },
-  { href: '/admin/receitas', label: 'Receitas' },
+  { href: '/admin/videos', label: 'Videos' },
+  { href: '/admin/receitas', label: 'Recipes' },
   { href: '/admin/blog', label: 'Blog' },
-  { href: '/admin/colecoes', label: 'Coleções' },
-  { href: '/admin/instrutores', label: 'Instrutores' },
-  { href: '/admin/utilizadores', label: 'Utilizadores' },
+  { href: '/admin/colecoes', label: 'Collections' },
+  { href: '/admin/instrutores', label: 'Instructors' },
+  { href: '/admin/utilizadores', label: 'Users' },
   { href: '/admin/newsletter', label: 'Newsletter' },
 ]
 
@@ -60,7 +60,7 @@ export default async function AdminLayout({
           <p className="text-xs text-text-muted truncate mb-2">{profile?.full_name || user.email}</p>
           <form action={logout}>
             <button className="text-xs text-text-muted hover:text-text transition-colors">
-              Sair
+              Sign out
             </button>
           </form>
         </div>

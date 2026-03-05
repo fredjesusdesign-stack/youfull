@@ -53,7 +53,7 @@ export default function AISearchBar() {
   }
 
   const labelFor = (type: string) =>
-    type === 'video' ? 'Vídeo' : type === 'recipe' ? 'Receita' : 'Blog'
+    type === 'video' ? 'Video' : type === 'recipe' ? 'Recipe' : 'Blog'
 
   return (
     <div className="w-full">
@@ -64,7 +64,7 @@ export default function AISearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-          placeholder="Ex: yoga para relaxar, receita rápida, respiração..."
+          placeholder="Ex: relaxing yoga, quick recipe, breathing..."
           className="flex-1 bg-transparent text-text placeholder-text-muted focus:outline-none text-sm"
         />
         {query && (
@@ -77,7 +77,7 @@ export default function AISearchBar() {
           disabled={loading || !query.trim()}
           className="flex-shrink-0 px-3 py-1 bg-primary hover:bg-primary-dark disabled:opacity-50 text-white text-xs rounded-full transition-colors font-medium"
         >
-          {loading ? <Loader2 size={12} className="animate-spin" /> : 'Pesquisar'}
+          {loading ? <Loader2 size={12} className="animate-spin" /> : 'Search'}
         </button>
       </div>
 
@@ -87,12 +87,12 @@ export default function AISearchBar() {
           {loading ? (
             <div className="flex items-center gap-2 text-text-muted text-sm p-2">
               <Loader2 size={14} className="animate-spin" />
-              A pesquisar...
+              Searching...
             </div>
           ) : results.length > 0 ? (
             <div className="bg-surface border border-border rounded-2xl overflow-hidden">
               <p className="text-xs text-text-muted px-4 pt-3 pb-2 border-b border-border">
-                {results.length} resultados para &quot;{query}&quot;
+                {results.length} results for &quot;{query}&quot;
               </p>
               {results.map((r) => (
                 <Link
@@ -109,7 +109,7 @@ export default function AISearchBar() {
             </div>
           ) : (
             <p className="text-text-muted text-sm p-2">
-              Nenhum resultado para &quot;{query}&quot;
+              No results for &quot;{query}&quot;
             </p>
           )}
         </div>

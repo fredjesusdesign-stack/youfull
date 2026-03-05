@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
   title: {
     template: '%s | Youfull',
-    default: 'Youfull — Lifestyle saudável',
+    default: 'Youfull — Healthy Lifestyle',
   },
-  description: 'Yoga, receitas saudáveis e inspiração para o teu estilo de vida.',
+  description: 'Yoga, healthy recipes and inspiration for your lifestyle.',
   openGraph: {
     siteName: 'Youfull',
     type: 'website',
-    locale: 'pt_PT',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt">
+    <html lang="en">
       <body>{children}</body>
     </html>
   )

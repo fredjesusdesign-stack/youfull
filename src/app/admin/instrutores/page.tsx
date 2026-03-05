@@ -10,9 +10,9 @@ export default async function AdminInstrutoresPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold text-text">Instrutores</h1>
+        <h1 className="text-2xl font-semibold text-text">Instructors</h1>
         <Link href="/admin/instrutores/novo" className="flex items-center gap-1 px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-full text-sm transition-colors">
-          <Plus size={14} /> Novo instrutor
+          <Plus size={14} /> New instructor
         </Link>
       </div>
 
@@ -36,7 +36,7 @@ export default async function AdminInstrutoresPage() {
           </div>
         ))}
         {(!instructors || instructors.length === 0) && (
-          <p className="text-text-muted col-span-3 py-8 text-center">Nenhum instrutor ainda.</p>
+          <p className="text-text-muted col-span-3 py-8 text-center">No instructors yet.</p>
         )}
       </div>
     </div>

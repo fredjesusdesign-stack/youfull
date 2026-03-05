@@ -13,7 +13,7 @@ export default async function EditBlogPage({ params }: Props) {
 
   return (
     <div className="max-w-2xl">
-      <h1 className="text-2xl font-semibold text-text mb-6">Editar post</h1>
+      <h1 className="text-2xl font-semibold text-text mb-6">Edit post</h1>
       <PostForm action={updatePost} post={{
         id: post.id,
         title: post.title,

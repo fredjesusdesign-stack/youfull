@@ -11,9 +11,9 @@ interface Props {
 }
 
 const DIFFICULTY_LABELS: Record<string, string> = {
-  beginner: 'Fácil',
-  intermediate: 'Médio',
-  advanced: 'Difícil',
+  beginner: 'Easy',
+  intermediate: 'Medium',
+  advanced: 'Hard',
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .eq('slug', slug)
     .single()
 
-  if (!data) return { title: 'Receita não encontrada' }
+  if (!data) return { title: 'Recipe not found' }
 
   return {
     title: data.title,
@@ -105,7 +105,7 @@ export default async function ReceitaPage({ params }: Props) {
     prepTime: recipe.prep_time ? `PT${recipe.prep_time}M` : undefined,
     cookTime: recipe.cook_time ? `PT${recipe.cook_time}M` : undefined,
     totalTime: totalTime ? `PT${totalTime}M` : undefined,
-    recipeYield: recipe.servings ? `${recipe.servings} porções` : undefined,
+    recipeYield: recipe.servings ? `${recipe.servings} servings` : undefined,
     recipeCategory: recipe.category,
     nutrition: nutrition
       ? {
@@ -140,7 +140,7 @@ export default async function ReceitaPage({ params }: Props) {
           className="inline-flex items-center gap-1 text-text-muted hover:text-text text-sm mb-6 transition-colors"
         >
           <ArrowLeft size={14} />
-          Todas as receitas
+          All recipes
         </Link>
 
         {/* Category + Title */}
@@ -157,7 +157,7 @@ export default async function ReceitaPage({ params }: Props) {
             <div className="flex items-center gap-1.5">
               <Clock size={14} />
               <div>
-                <p className="text-xs text-text-muted">Preparação</p>
+                <p className="text-xs text-text-muted">Prep time</p>
                 <p className="font-medium text-text">{recipe.prep_time} min</p>
               </div>
             </div>
@@ -166,7 +166,7 @@ export default async function ReceitaPage({ params }: Props) {
             <div className="flex items-center gap-1.5">
               <Clock size={14} />
               <div>
-                <p className="text-xs text-text-muted">Cozedura</p>
+                <p className="text-xs text-text-muted">Cook time</p>
                 <p className="font-medium text-text">{recipe.cook_time} min</p>
               </div>
             </div>
@@ -175,7 +175,7 @@ export default async function ReceitaPage({ params }: Props) {
             <div className="flex items-center gap-1.5">
               <Users size={14} />
               <div>
-                <p className="text-xs text-text-muted">Porções</p>
+                <p className="text-xs text-text-muted">Servings</p>
                 <p className="font-medium text-text">{recipe.servings}</p>
               </div>
             </div>
@@ -184,7 +184,7 @@ export default async function ReceitaPage({ params }: Props) {
             <div className="flex items-center gap-1.5">
               <BarChart2 size={14} />
               <div>
-                <p className="text-xs text-text-muted">Dificuldade</p>
+                <p className="text-xs text-text-muted">Difficulty</p>
                 <p className="font-medium text-text">{DIFFICULTY_LABELS[recipe.difficulty] ?? recipe.difficulty}</p>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default async function ReceitaPage({ params }: Props) {
         {/* Premium gate */}
         {recipe.is_premium && !hasAccess && (
           <div className="mb-8">
-            <PremiumLock message="Esta receita é exclusiva para membros premium." />
+            <PremiumLock message="This recipe is exclusive to premium members." />
           </div>
         )}
 
@@ -235,7 +235,7 @@ export default async function ReceitaPage({ params }: Props) {
               {/* Ingredients */}
               {ingredients && ingredients.length > 0 && (
                 <div>
-                  <h2 className="text-lg font-semibold text-text mb-4">Ingredientes</h2>
+                  <h2 className="text-lg font-semibold text-text mb-4">Ingredients</h2>
                   <ul className="space-y-2">
                     {ingredients.map((ing) => (
                       <li key={ing.id} className="flex items-start gap-2 text-sm">
@@ -252,16 +252,16 @@ export default async function ReceitaPage({ params }: Props) {
               {/* Nutrition */}
               {nutrition && (
                 <div>
-                  <h2 className="text-lg font-semibold text-text mb-4">Informação nutricional</h2>
+                  <h2 className="text-lg font-semibold text-text mb-4">Nutrition information</h2>
                   <div className="bg-surface border border-border rounded-2xl p-4">
-                    <p className="text-xs text-text-muted mb-3">Por porção</p>
+                    <p className="text-xs text-text-muted mb-3">Per serving</p>
                     <div className="grid grid-cols-2 gap-3">
                       {[
-                        { label: 'Calorias', value: nutrition.calories, unit: 'kcal' },
-                        { label: 'Proteína', value: nutrition.protein_g, unit: 'g' },
-                        { label: 'Hidratos', value: nutrition.carbs_g, unit: 'g' },
-                        { label: 'Gordura', value: nutrition.fat_g, unit: 'g' },
-                        { label: 'Fibra', value: nutrition.fiber_g, unit: 'g' },
+                        { label: 'Calories', value: nutrition.calories, unit: 'kcal' },
+                        { label: 'Protein', value: nutrition.protein_g, unit: 'g' },
+                        { label: 'Carbs', value: nutrition.carbs_g, unit: 'g' },
+                        { label: 'Fat', value: nutrition.fat_g, unit: 'g' },
+                        { label: 'Fiber', value: nutrition.fiber_g, unit: 'g' },
                       ]
                         .filter((n) => n.value != null)
                         .map((n) => (
@@ -284,7 +284,7 @@ export default async function ReceitaPage({ params }: Props) {
             {/* Steps */}
             {steps && steps.length > 0 && (
               <div className="mb-10">
-                <h2 className="text-lg font-semibold text-text mb-6">Preparação</h2>
+                <h2 className="text-lg font-semibold text-text mb-6">Preparation</h2>
                 <ol className="space-y-6">
                   {steps.map((step) => (
                     <li key={step.id} className="flex gap-4">
@@ -297,7 +297,7 @@ export default async function ReceitaPage({ params }: Props) {
                           <div className="relative aspect-video mt-3 rounded-xl overflow-hidden">
                             <Image
                               src={step.image_url}
-                              alt={`Passo ${step.step_number}`}
+                              alt={`Step ${step.step_number}`}
                               fill
                               className="object-cover"
                               sizes="(max-width: 768px) 100vw, 600px"
@@ -316,7 +316,7 @@ export default async function ReceitaPage({ params }: Props) {
         {/* Instructor */}
         {instructor && (
           <div className="border-t border-border pt-6">
-            <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Criado por</p>
+            <p className="text-xs text-text-muted uppercase tracking-widest mb-3">Created by</p>
             <Link
               href={`/instrutores/${instructor.slug}`}
               className="flex items-center gap-3 hover:opacity-80 transition-opacity w-fit"

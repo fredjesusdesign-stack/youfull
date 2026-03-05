@@ -24,7 +24,7 @@ export default function InstructorForm({ action, instructor }: Props) {
       if (error) throw error
       const { data } = supabase.storage.from('avatars').getPublicUrl(path)
       setAvatarUrl(data.publicUrl)
-    } catch { alert('Erro ao fazer upload.') }
+    } catch { alert('Error uploading.') }
     finally { setUploading(false) }
   }
 
@@ -36,17 +36,17 @@ export default function InstructorForm({ action, instructor }: Props) {
       <input type="hidden" name="avatar_url" value={avatarUrl} />
 
       <div>
-        <label className="block text-sm font-medium text-text mb-1.5">Nome *</label>
+        <label className="block text-sm font-medium text-text mb-1.5">Name *</label>
         <input name="name" type="text" required defaultValue={instructor?.name} className={inputClass} />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-text mb-1.5">Bio</label>
-        <textarea name="bio" rows={3} defaultValue={instructor?.bio ?? ''} className={inputClass} placeholder="Breve descrição..." />
+        <textarea name="bio" rows={3} defaultValue={instructor?.bio ?? ''} className={inputClass} placeholder="Brief description..." />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-text mb-1.5">Foto de perfil</label>
+        <label className="block text-sm font-medium text-text mb-1.5">Profile photo</label>
         <div className="flex items-center gap-4">
           {avatarUrl ? (
             <img src={avatarUrl} alt="Avatar" className="w-16 h-16 rounded-full object-cover" />
@@ -56,7 +56,7 @@ export default function InstructorForm({ action, instructor }: Props) {
             </div>
           )}
           <button type="button" onClick={() => fileInputRef.current?.click()} className="text-sm text-primary hover:underline">
-            {avatarUrl ? 'Alterar foto' : 'Fazer upload'}
+            {avatarUrl ? 'Change photo' : 'Upload'}
           </button>
         </div>
         <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleUpload} />
@@ -69,9 +69,9 @@ export default function InstructorForm({ action, instructor }: Props) {
 
       <div className="flex gap-3 pt-2">
         <button type="submit" className="px-6 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-full text-sm font-medium transition-colors">
-          {instructor ? 'Guardar' : 'Criar instrutor'}
+          {instructor ? 'Save' : 'Create instructor'}
         </button>
-        <a href="/admin/instrutores" className="px-6 py-2.5 border border-border text-text-muted hover:text-text rounded-full text-sm transition-colors">Cancelar</a>
+        <a href="/admin/instrutores" className="px-6 py-2.5 border border-border text-text-muted hover:text-text rounded-full text-sm transition-colors">Cancel</a>
       </div>
     </form>
   )

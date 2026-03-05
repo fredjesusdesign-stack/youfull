@@ -25,7 +25,7 @@ export default async function EditColecaoPage({ params }: Props) {
   return (
     <div className="max-w-2xl">
       <div className="flex items-center gap-3 mb-6">
-        <Link href="/admin/colecoes" className="text-text-muted hover:text-text text-sm">← Coleções</Link>
+        <Link href="/admin/colecoes" className="text-text-muted hover:text-text text-sm">← Collections</Link>
         <span className="text-border">/</span>
         <h1 className="text-2xl font-semibold text-text">{collection.title}</h1>
       </div>
@@ -33,7 +33,7 @@ export default async function EditColecaoPage({ params }: Props) {
       <CollectionForm action={updateCollection} collection={collection} />
 
       <div className="mt-10">
-        <h2 className="text-lg font-semibold text-text mb-4">Conteúdo da coleção</h2>
+        <h2 className="text-lg font-semibold text-text mb-4">Collection content</h2>
 
         {/* Current items */}
         {items && items.length > 0 && (
@@ -56,17 +56,17 @@ export default async function EditColecaoPage({ params }: Props) {
         <form action={addItemToCollection} className="flex gap-2 flex-wrap">
           <input type="hidden" name="collection_id" value={id} />
           <select name="content_type" className="px-3 py-2 border border-border rounded-xl bg-background text-text text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-            <option value="video">Vídeo</option>
-            <option value="recipe">Receita</option>
+            <option value="video">Video</option>
+            <option value="recipe">Recipe</option>
             <option value="post">Post</option>
           </select>
           <select name="content_id" className="flex-1 min-w-48 px-3 py-2 border border-border rounded-xl bg-background text-text text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-            <optgroup label="Vídeos">{videos?.map(v => <option key={v.id} value={v.id}>{v.title}</option>)}</optgroup>
-            <optgroup label="Receitas">{recipes?.map(r => <option key={r.id} value={r.id}>{r.title}</option>)}</optgroup>
+            <optgroup label="Videos">{videos?.map(v => <option key={v.id} value={v.id}>{v.title}</option>)}</optgroup>
+            <optgroup label="Recipes">{recipes?.map(r => <option key={r.id} value={r.id}>{r.title}</option>)}</optgroup>
             <optgroup label="Posts">{posts?.map(p => <option key={p.id} value={p.id}>{p.title}</option>)}</optgroup>
           </select>
           <button type="submit" className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-full text-sm transition-colors">
-            Adicionar
+            Add
           </button>
         </form>
       </div>
