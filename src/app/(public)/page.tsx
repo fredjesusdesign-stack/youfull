@@ -39,32 +39,36 @@ export default async function HomePage() {
         </p>
       </section>
 
-      {/* ── 3. ABOUT — text left + image right ── */}
-      <section className="relative pb-20 md:pb-32 overflow-hidden grid md:grid-cols-2 items-center">
-        {/* Left: text with padding */}
-        <div className="px-8 space-y-6 py-8 md:py-0">
-          <p className="text-text text-base md:text-lg leading-relaxed max-w-sm">
-            It brings together intentional movement, simple rituals, and sustainable habits to support balance, vitality, and a deeper connection with yourself.
-          </p>
-          <p className="text-text font-medium text-base md:text-lg">
-            It is not about doing more.<br />
-            It&apos;s about choosing YOU.
-          </p>
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-text border border-border rounded-full px-4 py-2 hover:bg-surface transition-colors">
-            More about us
-          </Link>
+      {/* ── 3. ABOUT — text bottom-left + tall portrait image right ── */}
+      <section className="relative overflow-hidden grid md:grid-cols-2" style={{ minHeight: 980 }}>
+        {/* Left: text anchored to bottom */}
+        <div className="flex items-end px-8 pb-16 md:pb-20">
+          <div className="space-y-5">
+            <p className="text-text text-base md:text-lg leading-relaxed max-w-sm">
+              It brings together intentional movement, simple rituals, and sustainable habits to support balance, vitality, and a deeper connection to yourself.
+            </p>
+            <p className="text-text font-medium text-base md:text-lg">
+              It is not about doing more.<br />
+              It&apos;s about choosing YOU.
+            </p>
+            <Link href="/blog" className="inline-flex text-sm text-text border border-[#c9c1bc] rounded-full px-5 py-2 hover:bg-surface transition-colors">
+              More about us
+            </Link>
+          </div>
         </div>
 
-        {/* Right: image fills the column + parallax glow behind */}
-        <div className="relative flex justify-end items-end h-[480px] md:h-[600px]">
+        {/* Right: 629×980 portrait image + parallax green glow */}
+        <div className="relative" style={{ height: 980 }}>
           <ParallaxGlow />
-          <Image
-            src="/hero-about.png"
-            alt="Yoga meditation"
-            fill
-            className="object-contain object-bottom relative z-10"
-            sizes="(max-width: 768px) 100vw, 704px"
-          />
+          <div className="absolute inset-0 z-10">
+            <Image
+              src="/hero-about.png"
+              alt="Yoga meditation"
+              fill
+              className="object-contain object-top"
+              sizes="629px"
+            />
+          </div>
         </div>
       </section>
 
