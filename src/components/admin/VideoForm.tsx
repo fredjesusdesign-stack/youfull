@@ -31,7 +31,7 @@ interface Props {
   instructors: Instructor[]
 }
 
-const CATEGORIES = ['Yoga', 'Meditação', 'Pilates', 'Respiração', 'Dança', 'Força', 'Outro']
+const CATEGORIES = ['Yoga', 'Meditation', 'Pilates', 'Barre', 'Other']
 
 export default function VideoForm({ action, video, instructors }: Props) {
   const [thumbnailUrl, setThumbnailUrl] = useState(video?.thumbnail_url ?? '')
