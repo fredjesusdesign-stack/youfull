@@ -8,21 +8,33 @@ export default function WaveAnimation() {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const paths = [path1Ref.current, path2Ref.current].filter(Boolean) as SVGPathElement[]
+    const p1 = path1Ref.current
+    const p2 = path2Ref.current
+    if (!p1 || !p2) return
 
-    paths.forEach((path) => {
-      const len = path.getTotalLength()
-      path.style.strokeDasharray = `${len}`
-      path.style.strokeDashoffset = `${len}`
-    })
+    // Both paths reveal left→right: dashoffset starts at full length, animates to 0
+    const len1 = p1.getTotalLength()
+    const len2 = p2.getTotalLength()
+
+    p1.style.strokeDasharray = `${len1}`
+    p1.style.strokeDashoffset = `${len1}`
+    p2.style.strokeDasharray = `${len2}`
+    p2.style.strokeDashoffset = `${len2}`
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return
-        paths.forEach((path) => {
-          path.style.transition = 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)'
-          path.style.strokeDashoffset = '0'
-        })
+
+        // Path 1 — immediate
+        p1.style.transition = 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)'
+        p1.style.strokeDashoffset = '0'
+
+        // Path 2 (lighter) — delayed 600ms
+        setTimeout(() => {
+          p2.style.transition = 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)'
+          p2.style.strokeDashoffset = '0'
+        }, 600)
+
         observer.disconnect()
       },
       { threshold: 0.4 }
@@ -42,12 +54,14 @@ export default function WaveAnimation() {
         preserveAspectRatio="none"
         style={{ height: 62 }}
       >
+        {/* Path 1 — solid, left→right */}
         <path
           ref={path1Ref}
           d="M2.71011e-06 31L64.6183 31C80.1944 31 95.6753 28.5734 110.504 23.8075L136.973 15.3005C166.822 5.70731 199.471 11.2325 224.502 30.1127C250.101 49.4221 283.627 54.7357 313.942 44.2882L318.509 42.7143C340.481 35.1421 364.404 35.4606 386.167 43.6151C415.402 54.5694 448.075 51.2391 474.499 34.6118L481.571 30.1611C511.841 11.1133 549.168 6.97727 582.873 18.9361L593.975 22.8751C609.13 28.2522 625.093 31 641.173 31L705 31"
           stroke="#222523"
           strokeWidth="3"
         />
+        {/* Path 2 — 20% opacity, delayed */}
         <path
           ref={path2Ref}
           opacity="0.2"
